@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -8,21 +8,35 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
 
     search: {
-      provider: 'local'
+      provider: "local",
     },
-    
+
     sidebar: [
       {
-        text: 'Examples',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
+          {
+            text: "Binary Tree General",
+            collapsed: true,
+            items: [
+              {
+                text: "124.Binary Tree Maximum Path Sum",
+                link: "/binary-tree-general/124.md",
+              },
+              {
+                text: "236.Lowest Common Ancestor of a Binary Tree",
+                link: "/binary-tree-general/236.md",
+              },
+            ],
+          },
+        ],
+      },
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
-})
+      {
+        icon: "github",
+        link: "https://github.com/hellforever/vitepress-leetcode-note",
+      },
+    ],
+  },
+});
