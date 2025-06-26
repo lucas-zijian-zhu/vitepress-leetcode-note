@@ -23,6 +23,10 @@ export default defineConfig({
                 link: "/binary-tree-general/124.md",
               },
               {
+                text: "129.Sum Root to Leaf Numbers",
+                link: "/binary-tree-general/129.md",
+              },
+              {
                 text: "236.Lowest Common Ancestor of a Binary Tree",
                 link: "/binary-tree-general/236.md",
               },
