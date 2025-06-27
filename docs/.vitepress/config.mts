@@ -27,6 +27,10 @@ export default defineConfig({
                 link: "/binary-tree-general/129.md",
               },
               {
+                text: "222.Count Commplete Tree Nodes",
+                link: "/binary-tree-general/222.md",
+              },
+              {
                 text: "236.Lowest Common Ancestor of a Binary Tree",
                 link: "/binary-tree-general/236.md",
               },
