@@ -19,6 +19,14 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "100.Same Tree",
+                link: "/binary-tree-general/100.md",
+              },
+              {
+                text: "104.Maximum Depth of Binary Tree",
+                link: "/binary-tree-general/104.md",
+              },
+              {
                 text: "124.Binary Tree Maximum Path Sum",
                 link: "/binary-tree-general/124.md",
               },
