@@ -44,6 +44,16 @@ export default defineConfig({
               },
             ],
           },
+          {
+            text: "1D-DP",
+            collapsed: true,
+            items: [
+              {
+                text: "139.Binary Tree Vertical Order Traversal",
+                link: "1D-DP/139.md",
+              },
+            ],
+          },
         ],
       },
     ],
