@@ -53,6 +53,10 @@ export default defineConfig({
                 link: "1D-DP/139.md",
               },
               {
+                text: "300.Longest Increasing Subsequence",
+                link: "1D-DP/300.md",
+              },
+              {
                 text: "322.Coin Change",
                 link: "1D-DP/322.md",
               },
