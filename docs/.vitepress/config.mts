@@ -62,6 +62,16 @@ export default defineConfig({
               },
             ],
           },
+          {
+            text: "Multidimensional DP",
+            collapsed: true,
+            items: [
+              {
+                text: "120.Triangle",
+                link: "multidimensional-dp/120.md",
+              },
+            ],
+          },
         ],
       },
     ],
