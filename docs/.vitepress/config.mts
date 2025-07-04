@@ -67,6 +67,10 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "64.Minimum Path Sum",
+                link: "multidimensional-dp/64.md",
+              },
+              {
                 text: "120.Triangle",
                 link: "multidimensional-dp/120.md",
               },
