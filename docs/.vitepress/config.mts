@@ -67,6 +67,10 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "5.Longest Palindromic Substring",
+                link: "multidimensional-dp/5.md",
+              },
+              {
                 text: "63.Unique Paths II",
                 link: "multidimensional-dp/63.md",
               },
