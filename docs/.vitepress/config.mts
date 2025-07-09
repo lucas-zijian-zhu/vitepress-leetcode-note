@@ -15,6 +15,20 @@ export default defineConfig({
       {
         items: [
           {
+            text: "Array and String",
+            collapsed: true,
+            items: [
+              {
+                text: "121.Best Time to Buy and Sell Stock",
+                link: "/array-string/121.md",
+              },
+              {
+                text: "122.Best Time to Buy and Sell Stock II",
+                link: "/array-string/122.md",
+              },
+            ],
+          },
+          {
             text: "Binary Tree General",
             collapsed: true,
             items: [
@@ -89,6 +103,10 @@ export default defineConfig({
               {
                 text: "120.Triangle",
                 link: "multidimensional-dp/120.md",
+              },
+              {
+                text: "123.Best Time to Buy and Sell Stock III",
+                link: "multidimensional-dp/123.md",
               },
             ],
           },
