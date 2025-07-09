@@ -75,12 +75,16 @@ export default defineConfig({
                 link: "multidimensional-dp/63.md",
               },
               {
-                text: "97.Interleaving String",
-                link: "multidimensional-dp/97.md",
-              },
-              {
                 text: "64.Minimum Path Sum",
                 link: "multidimensional-dp/64.md",
+              },
+              {
+                text: "72.Edit Distance",
+                link: "multidimensional-dp/72.md",
+              },
+              {
+                text: "97.Interleaving String",
+                link: "multidimensional-dp/97.md",
               },
               {
                 text: "120.Triangle",
