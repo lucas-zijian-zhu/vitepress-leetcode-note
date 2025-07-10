@@ -108,6 +108,10 @@ export default defineConfig({
                 text: "123.Best Time to Buy and Sell Stock III",
                 link: "multidimensional-dp/123.md",
               },
+              {
+                text: "188.Best Time to Buy and Sell Stock IV",
+                link: "multidimensional-dp/188.md",
+              }
             ],
           },
         ],
