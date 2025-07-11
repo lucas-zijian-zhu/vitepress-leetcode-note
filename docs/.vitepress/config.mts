@@ -111,7 +111,11 @@ export default defineConfig({
               {
                 text: "188.Best Time to Buy and Sell Stock IV",
                 link: "multidimensional-dp/188.md",
-              }
+              },
+              {
+                text: "309.Best Time to Buy and Sell Stock with Cooldown",
+                link: "multidimensional-dp/309.md",
+              },
             ],
           },
         ],
