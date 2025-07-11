@@ -113,6 +113,10 @@ export default defineConfig({
                 link: "multidimensional-dp/188.md",
               },
               {
+                text: "221.Maximal Square",
+                link: "multidimensional-dp/221.md",
+              },
+              {
                 text: "309.Best Time to Buy and Sell Stock with Cooldown",
                 link: "multidimensional-dp/309.md",
               },
