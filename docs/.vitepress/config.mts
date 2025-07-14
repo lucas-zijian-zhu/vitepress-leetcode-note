@@ -19,6 +19,18 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "26.Remove Duplicates from Sorted Array",
+                link: "/array-string/26.md",
+              },
+              {
+                text: "27.Remove Element",
+                link: "/array-string/27.md",
+              },
+              {
+                text: "88.Merge Sorted Array",
+                link: "/array-string/88.md",
+              },
+              {
                 text: "121.Best Time to Buy and Sell Stock",
                 link: "/array-string/121.md",
               },
