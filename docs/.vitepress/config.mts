@@ -27,6 +27,10 @@ export default defineConfig({
                 link: "/array-string/27.md",
               },
               {
+                text: "80.Remove Duplicates from Sorted Array II",
+                link: "/array-string/80.md",
+              },
+              {
                 text: "88.Merge Sorted Array",
                 link: "/array-string/88.md",
               },
@@ -37,6 +41,14 @@ export default defineConfig({
               {
                 text: "122.Best Time to Buy and Sell Stock II",
                 link: "/array-string/122.md",
+              },
+              {
+                text: " 169.Majority Element",
+                link: "/array-string/169.md",
+              },
+              {
+                text: "189.Rotate Array",
+                link: "/array-string/189.md",
               },
             ],
           },
