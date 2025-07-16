@@ -27,6 +27,14 @@ export default defineConfig({
                 link: "/array-string/27.md",
               },
               {
+                text: "45.Jump Game II",
+                link: "/array-string/45.md",
+              },
+              {
+                text: " 55.Jump Game",
+                link: "/array-string/55.md",
+              },
+              {
                 text: "80.Remove Duplicates from Sorted Array II",
                 link: "/array-string/80.md",
               },
