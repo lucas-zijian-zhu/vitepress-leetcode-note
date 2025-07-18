@@ -58,6 +58,14 @@ export default defineConfig({
                 text: "189.Rotate Array",
                 link: "/array-string/189.md",
               },
+              {
+                text: "238.Product of Array Except Self",
+                link: "/array-string/238.md",
+              },
+              {
+                text: "274.H-Index",
+                link: "/array-string/274.md",
+              },
             ],
           },
           {
