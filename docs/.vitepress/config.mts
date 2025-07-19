@@ -55,7 +55,11 @@ export default defineConfig({
                 link: "/array-string/134.md",
               },
               {
-                text: " 169.Majority Element",
+                text: "135.Candy",
+                link: "/array-string/135.md",
+              },
+              {
+                text: "169.Majority Element",
                 link: "/array-string/169.md",
               },
               {
