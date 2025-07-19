@@ -51,6 +51,10 @@ export default defineConfig({
                 link: "/array-string/122.md",
               },
               {
+                text: "134.Gas Station",
+                link: "/array-string/134.md",
+              },
+              {
                 text: " 169.Majority Element",
                 link: "/array-string/169.md",
               },
