@@ -27,6 +27,10 @@ export default defineConfig({
                 link: "/array-string/27.md",
               },
               {
+                text: "42.Trapping Rain Water",
+                link: "/array-string/42.md",
+              },
+              {
                 text: "45.Jump Game II",
                 link: "/array-string/45.md",
               },
