@@ -19,6 +19,14 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "12.Integer to Roman",
+                link: "/array-string/12.md",
+              },
+              {
+                text: "13.Roman to Integer",
+                link: "/array-string/13.md",
+              },
+              {
                 text: "26.Remove Duplicates from Sorted Array",
                 link: "/array-string/26.md",
               },
