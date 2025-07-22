@@ -27,6 +27,10 @@ export default defineConfig({
                 link: "/array-string/13.md",
               },
               {
+                text: "14.Longest Common Prefix",
+                link: "/array-string/14.md",
+              },
+              {
                 text: "26.Remove Duplicates from Sorted Array",
                 link: "/array-string/26.md",
               },
@@ -45,6 +49,10 @@ export default defineConfig({
               {
                 text: " 55.Jump Game",
                 link: "/array-string/55.md",
+              },
+              {
+                text: "58.Length of Last Word",
+                link: "/array-string/58.md",
               },
               {
                 text: "80.Remove Duplicates from Sorted Array II",
