@@ -39,6 +39,10 @@ export default defineConfig({
                 link: "/array-string/27.md",
               },
               {
+                text: "28. Find the Index of the First Occurrence in a String",
+                link: "/array-string/28.md",
+              },
+              {
                 text: "42.Trapping Rain Water",
                 link: "/array-string/42.md",
               },
@@ -69,6 +73,10 @@ export default defineConfig({
               {
                 text: "122.Best Time to Buy and Sell Stock II",
                 link: "/array-string/122.md",
+              },
+              {
+                text: "125.Valid Palindrome",
+                link: "/array-string/125.md",
               },
               {
                 text: "134.Gas Station",
