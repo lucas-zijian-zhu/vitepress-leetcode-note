@@ -87,6 +87,10 @@ export default defineConfig({
                 link: "/array-string/135.md",
               },
               {
+                text: "167.Two Sum II - Input Array Is Sorted",
+                link: "/array-string/167.md",
+              },
+              {
                 text: "169.Majority Element",
                 link: "/array-string/169.md",
               },
@@ -102,6 +106,10 @@ export default defineConfig({
                 text: "274.H-Index",
                 link: "/array-string/274.md",
               },
+              {
+                text :"392.Is Subsequence",
+                link: "/array-string/392.md",
+              }
             ],
           },
           {
