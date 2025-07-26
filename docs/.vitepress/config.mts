@@ -19,6 +19,10 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "11.Container With Most Water",
+                link: "/array-string/11.md",
+              },
+              {
                 text: "12.Integer to Roman",
                 link: "/array-string/12.md",
               },
@@ -29,6 +33,10 @@ export default defineConfig({
               {
                 text: "14.Longest Common Prefix",
                 link: "/array-string/14.md",
+              },
+              {
+                text: "15.3Sum",
+                link: "/array-string/15.md",
               },
               {
                 text: "26.Remove Duplicates from Sorted Array",
@@ -107,9 +115,9 @@ export default defineConfig({
                 link: "/array-string/274.md",
               },
               {
-                text :"392.Is Subsequence",
+                text: "392.Is Subsequence",
                 link: "/array-string/392.md",
-              }
+              },
             ],
           },
           {
