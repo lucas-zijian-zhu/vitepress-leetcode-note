@@ -125,6 +125,14 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "3.Longest Substring Without Repeating Characters",
+                link: "/sliding-window/3.md",
+              },
+              {
+                text: "76.Minimum Window Substring",
+                link: "/sliding-window/76.md",
+              },
+              {
                 text: "209.Minimum Size Subarray Sum",
                 link: "/sliding-window/209.md",
               },
