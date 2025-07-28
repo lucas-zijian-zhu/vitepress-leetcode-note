@@ -121,6 +121,16 @@ export default defineConfig({
             ],
           },
           {
+            text: "Sliding Window",
+            collapsed: true,
+            items: [
+              {
+                text: "209.Minimum Size Subarray Sum",
+                link: "/sliding-window/209.md",
+              },
+            ],
+          },
+          {
             text: "Binary Tree General",
             collapsed: true,
             items: [
