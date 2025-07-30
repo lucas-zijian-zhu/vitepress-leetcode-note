@@ -139,6 +139,16 @@ export default defineConfig({
             ],
           },
           {
+            text:"Matrix",
+            collapsed: true,
+            items: [
+              {
+                text: "36.Valid Sudoku",
+                link: "/matrix/36.md",
+              },
+            ],
+          },
+          {
             text: "Binary Tree General",
             collapsed: true,
             items: [
