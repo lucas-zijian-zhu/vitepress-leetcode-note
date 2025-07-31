@@ -146,6 +146,10 @@ export default defineConfig({
                 text: "36.Valid Sudoku",
                 link: "/matrix/36.md",
               },
+              {
+                text: "54.Spiral Matrix",
+                link: "/matrix/54.md",
+              },
             ],
           },
           {
