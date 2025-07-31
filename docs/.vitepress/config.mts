@@ -147,6 +147,10 @@ export default defineConfig({
                 link: "/matrix/36.md",
               },
               {
+                text: "48.Rotate Image",
+                link: "/matrix/48.md",
+              },
+              {
                 text: "54.Spiral Matrix",
                 link: "/matrix/54.md",
               },
