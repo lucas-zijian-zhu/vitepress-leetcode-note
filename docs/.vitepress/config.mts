@@ -154,6 +154,14 @@ export default defineConfig({
                 text: "54.Spiral Matrix",
                 link: "/matrix/54.md",
               },
+              {
+                text: "59.Spiral Matrix II",
+                link: "/matrix/59.md",
+              },
+              {
+                text: "73.Set Matrix Zeroes",
+                link: "/matrix/73.md",
+              },
             ],
           },
           {
