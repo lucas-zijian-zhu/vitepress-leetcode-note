@@ -47,10 +47,6 @@ export default defineConfig({
                 link: "/array-string/27.md",
               },
               {
-                text: "28. Find the Index of the First Occurrence in a String",
-                link: "/array-string/28.md",
-              },
-              {
                 text: "42.Trapping Rain Water",
                 link: "/array-string/42.md",
               },
@@ -59,7 +55,7 @@ export default defineConfig({
                 link: "/array-string/45.md",
               },
               {
-                text: " 55.Jump Game",
+                text: "55.Jump Game",
                 link: "/array-string/55.md",
               },
               {
@@ -93,6 +89,10 @@ export default defineConfig({
               {
                 text: "135.Candy",
                 link: "/array-string/135.md",
+              },
+              {
+                text: "151.Reverse Words in a String",
+                link: "/array-string/151.md",
               },
               {
                 text: "167.Two Sum II - Input Array Is Sorted",
