@@ -162,6 +162,10 @@ export default defineConfig({
                 text: "73.Set Matrix Zeroes",
                 link: "/matrix/73.md",
               },
+              {
+                text: "289.Game of Life",
+                link: "/matrix/289.md",
+              }
             ],
           },
           {
