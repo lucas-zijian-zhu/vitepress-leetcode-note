@@ -169,6 +169,16 @@ export default defineConfig({
             ],
           },
           {
+            text:"Hashmap",
+            collapsed: true,
+            items: [
+              {
+                text: "383.Ransom Note",
+                link: "/hashmap/383.md",
+              }
+            ],
+          },
+          {
             text: "Binary Tree General",
             collapsed: true,
             items: [
