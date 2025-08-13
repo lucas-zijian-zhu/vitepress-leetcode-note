@@ -139,7 +139,7 @@ export default defineConfig({
             ],
           },
           {
-            text:"Matrix",
+            text: "Matrix",
             collapsed: true,
             items: [
               {
@@ -165,17 +165,21 @@ export default defineConfig({
               {
                 text: "289.Game of Life",
                 link: "/matrix/289.md",
-              }
+              },
             ],
           },
           {
-            text:"Hashmap",
+            text: "Hashmap",
             collapsed: true,
             items: [
               {
+                text: "205.Isomorphic Strings",
+                link: "/hashmap/205.md",
+              },
+              {
                 text: "383.Ransom Note",
                 link: "/hashmap/383.md",
-              }
+              },
             ],
           },
           {
