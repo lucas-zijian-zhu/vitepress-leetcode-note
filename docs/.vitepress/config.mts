@@ -177,6 +177,14 @@ export default defineConfig({
                 link: "/hashmap/205.md",
               },
               {
+                text: "242.Valid Anagram",
+                link: "/hashmap/242.md",
+              },
+              {
+                text: "290.Word Pattern",
+                link: "/hashmap/290.md",
+              },
+              {
                 text: "383.Ransom Note",
                 link: "/hashmap/383.md",
               },
