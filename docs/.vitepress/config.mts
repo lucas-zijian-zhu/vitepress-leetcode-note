@@ -173,6 +173,10 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "49.Group Anagrams",
+                link: "/hashmap/49.md",
+              },
+              {
                 text: "205.Isomorphic Strings",
                 link: "/hashmap/205.md",
               },
