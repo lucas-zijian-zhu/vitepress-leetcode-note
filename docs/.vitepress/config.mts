@@ -177,6 +177,10 @@ export default defineConfig({
                 link: "/hashmap/49.md",
               },
               {
+                text: "202.Happy Number",
+                link: "/hashmap/202.md",
+              }, 
+              {
                 text: "205.Isomorphic Strings",
                 link: "/hashmap/205.md",
               },
