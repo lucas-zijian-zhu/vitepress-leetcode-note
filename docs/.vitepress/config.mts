@@ -173,6 +173,10 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "1.Two Sum",
+                link: "/hashmap/1.md",
+              },
+              {
                 text: "49.Group Anagrams",
                 link: "/hashmap/49.md",
               },
