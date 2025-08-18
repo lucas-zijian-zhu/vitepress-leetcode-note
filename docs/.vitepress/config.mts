@@ -189,6 +189,10 @@ export default defineConfig({
                 link: "/hashmap/205.md",
               },
               {
+                text: "219.Contains Duplicate II",
+                link: "/hashmap/219.md",
+              },
+              {
                 text: "242.Valid Anagram",
                 link: "/hashmap/242.md",
               },
