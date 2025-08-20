@@ -207,6 +207,16 @@ export default defineConfig({
             ],
           },
           {
+            text:"Intervals",
+            collapsed: true,
+            items: [
+              {
+                text: "56.Merge Intervals",
+                link: "/intervals/56.md",
+              },
+            ],
+          },
+          {
             text: "Binary Tree General",
             collapsed: true,
             items: [
