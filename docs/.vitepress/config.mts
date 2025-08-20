@@ -214,6 +214,10 @@ export default defineConfig({
                 text: "56.Merge Intervals",
                 link: "/intervals/56.md",
               },
+              {
+                text: "57.Insert Interval",
+                link: "/intervals/57.md",
+              }
             ],
           },
           {
