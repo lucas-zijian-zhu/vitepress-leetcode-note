@@ -217,6 +217,10 @@ export default defineConfig({
               {
                 text: "57.Insert Interval",
                 link: "/intervals/57.md",
+              },
+              {
+                text: "452.Add Overloaded Operators",
+                link: "/intervals/452.md"
               }
             ],
           },
