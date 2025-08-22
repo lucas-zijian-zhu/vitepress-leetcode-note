@@ -225,6 +225,16 @@ export default defineConfig({
             ],
           },
           {
+            text: "Stack",
+            collapsed: true,
+            items: [
+              {
+                text: "71.Simplified Path",
+                link: "/stack/71.md",
+              },
+            ],
+          },
+          {
             text: "Binary Tree General",
             collapsed: true,
             items: [
