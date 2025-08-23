@@ -232,6 +232,10 @@ export default defineConfig({
                 text: "71.Simplified Path",
                 link: "/stack/71.md",
               },
+              {
+                text: "155.Min Stack",
+                link: "/stack/155.md",
+              }
             ],
           },
           {
