@@ -229,8 +229,16 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "20.Valid Parentheses",
+                link: "/stack/20.md",
+              },
+              {
                 text: "71.Simplified Path",
                 link: "/stack/71.md",
+              },
+              {
+                text: "150.Evaluate Reverse Polish Notation",
+                link: "/stack/150.md",
               },
               {
                 text: "155.Min Stack",
