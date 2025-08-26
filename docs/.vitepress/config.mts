@@ -243,6 +243,10 @@ export default defineConfig({
               {
                 text: "155.Min Stack",
                 link: "/stack/155.md",
+              },
+              {
+                text: "224.Basic Calculator",
+                link: "/stack/224.md",
               }
             ],
           },
