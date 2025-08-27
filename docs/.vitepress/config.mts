@@ -247,6 +247,16 @@ export default defineConfig({
             ],
           },
           {
+            text: "LinkedList",
+            collapsed: true,
+            items: [
+              {
+                text: "2.Add Two Numbers",
+                link: "/linked-list/2.md",
+              }
+            ],
+          },
+          {
             text: "Binary Tree General",
             collapsed: true,
             items: [
