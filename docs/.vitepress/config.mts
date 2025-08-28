@@ -253,6 +253,14 @@ export default defineConfig({
               {
                 text: "2.Add Two Numbers",
                 link: "/linked-list/2.md",
+              },
+              {
+                text: "21.Merge Two Sorted Lists",
+                link: "/linked-list/21.md",
+              },
+              {
+                text: "141.Linked List Cycle",
+                link: "/linked-list/141.md"
               }
             ],
           },
