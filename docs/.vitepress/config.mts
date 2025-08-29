@@ -259,6 +259,10 @@ export default defineConfig({
                 link: "/linked-list/21.md",
               },
               {
+                text: "92.Reverse Linked List",
+                link: "/linked-list/92.md"
+              },
+              {
                 text: "141.Linked List Cycle",
                 link: "/linked-list/141.md"
               }
