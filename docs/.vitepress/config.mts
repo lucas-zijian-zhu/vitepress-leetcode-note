@@ -255,6 +255,10 @@ export default defineConfig({
                 link: "/linked-list/2.md",
               },
               {
+                text: "19.Remove Nth Node From End of List",
+                link: "/linked-list/19.md",
+              },
+              {
                 text: "21.Merge Two Sorted Lists",
                 link: "/linked-list/21.md",
               },
