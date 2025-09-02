@@ -263,6 +263,10 @@ export default defineConfig({
                 link: "/linked-list/21.md",
               },
               {
+                text: "82.Remove Duplicates from Sorted List",
+                link: "/linked-list/82.md"
+              },
+              {
                 text: "92.Reverse Linked List",
                 link: "/linked-list/92.md"
               },
