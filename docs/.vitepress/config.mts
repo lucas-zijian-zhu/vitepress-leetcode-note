@@ -301,6 +301,10 @@ export default defineConfig({
                 link: "/binary-tree-general/104.md",
               },
               {
+                text: "105.Construct Binary Tree from Preorder and Inorder Traversal",
+                link: "/binary-tree-general/105.md",
+              },
+              {
                 text: "124.Binary Tree Maximum Path Sum",
                 link: "/binary-tree-general/124.md",
               },
@@ -311,6 +315,10 @@ export default defineConfig({
               {
                 text: "222.Count Commplete Tree Nodes",
                 link: "/binary-tree-general/222.md",
+              },
+              {
+                text: "226.Invert Binary Tree",
+                link: "/binary-tree-general/226.md",
               },
               {
                 text: "236.Lowest Common Ancestor of a Binary Tree",
