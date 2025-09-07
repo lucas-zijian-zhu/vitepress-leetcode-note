@@ -271,6 +271,10 @@ export default defineConfig({
                 link: "/linked-list/82.md"
               },
               {
+                text: "86.Partition List",
+                link: "/linked-list/86.md"
+              },
+              {
                 text: "92.Reverse Linked List",
                 link: "/linked-list/92.md"
               },
