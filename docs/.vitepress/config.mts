@@ -305,6 +305,14 @@ export default defineConfig({
                 link: "/binary-tree-general/105.md",
               },
               {
+                text: "106.Construct Binary Tree from Inorder and Postorder Traversal",
+                link: "/binary-tree-general/106.md",
+              },
+              {
+                text: "117.Populating Next Right Pointers in Each Node II",
+                link: "/binary-tree-general/117.md",
+              },
+              {
                 text: "124.Binary Tree Maximum Path Sum",
                 link: "/binary-tree-general/124.md",
               },
