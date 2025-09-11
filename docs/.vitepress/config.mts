@@ -309,6 +309,10 @@ export default defineConfig({
                 link: "/binary-tree-general/106.md",
               },
               {
+                text: "114.Flatten Binary Tree to Linked List",
+                link: "/binary-tree-general/114.md",
+              },
+              {
                 text: "117.Populating Next Right Pointers in Each Node II",
                 link: "/binary-tree-general/117.md",
               },
