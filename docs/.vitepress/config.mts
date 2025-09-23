@@ -325,6 +325,10 @@ export default defineConfig({
                 link: "/binary-tree-general/129.md",
               },
               {
+                text: "199.Binary Tree Right Side View",
+                link: "/binary-tree-general/199.md",
+              },
+              {
                 text: "222.Count Commplete Tree Nodes",
                 link: "/binary-tree-general/222.md",
               },
