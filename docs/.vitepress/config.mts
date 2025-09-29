@@ -348,6 +348,10 @@ export default defineConfig({
                 text: "236.Lowest Common Ancestor of a Binary Tree",
                 link: "/binary-tree-general/236.md",
               },
+              {
+                text: "530.Minimum Absolute Difference in BST",
+                link: "/binary-tree-general/530.md",
+              },
             ],
           },
           {
