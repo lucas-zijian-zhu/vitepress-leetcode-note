@@ -289,6 +289,10 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "98.Validate Binary Search Tree",
+                link: "/binary-tree-general/98.md",
+              },
+              {
                 text: "100.Same Tree",
                 link: "/binary-tree-general/100.md",
               },
@@ -343,6 +347,10 @@ export default defineConfig({
               {
                 text: "226.Invert Binary Tree",
                 link: "/binary-tree-general/226.md",
+              },
+              {
+                text: "230.Kth Smallest Element in a BST",
+                link: "/binary-tree-general/230.md",
               },
               {
                 text: "236.Lowest Common Ancestor of a Binary Tree",
