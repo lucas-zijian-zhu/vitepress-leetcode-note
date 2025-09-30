@@ -363,6 +363,16 @@ export default defineConfig({
             ],
           },
           {
+            text: "Graph General",
+            collapsed: true,
+            items: [
+              {
+                text: "200.Number of Islands",
+                link: "/graph-general/200.md",
+              },
+            ],
+          },
+          {
             text: "1D-DP",
             collapsed: true,
             items: [
