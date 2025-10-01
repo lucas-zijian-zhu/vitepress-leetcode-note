@@ -378,6 +378,10 @@ export default defineConfig({
                 text: "200.Number of Islands",
                 link: "/graph-general/200.md",
               },
+              {
+                text: "399.Evaluate Division",
+                link: "/graph-general/399.md",
+              },
             ],
           },
           {
