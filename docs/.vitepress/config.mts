@@ -367,6 +367,14 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "130.Surrounded Regions",
+                link: "/graph-general/130.md",
+              },
+              {
+                text: "133.Clone Graph",
+                link: "/graph-general/133.md",
+              },
+              {
                 text: "200.Number of Islands",
                 link: "/graph-general/200.md",
               },
