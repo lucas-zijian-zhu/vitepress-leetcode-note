@@ -379,6 +379,14 @@ export default defineConfig({
                 link: "/graph-general/200.md",
               },
               {
+                text: "207.Course Schedule",
+                link: "/graph-general/207.md",
+              },
+              {
+                text: "210.Course Schedule II",
+                link: "/graph-general/210.md",
+              },
+              {
                 text: "399.Evaluate Division",
                 link: "/graph-general/399.md",
               },
