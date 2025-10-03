@@ -393,6 +393,16 @@ export default defineConfig({
             ],
           },
           {
+            text: "Heap",
+            collapsed: true,
+            items: [
+              {
+                text: "215.Kth Largest Element in an Array",
+                link: "/heap/215.md",
+              },
+            ],
+          },
+          {
             text: "1D-DP",
             collapsed: true,
             items: [
