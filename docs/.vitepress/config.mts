@@ -357,6 +357,10 @@ export default defineConfig({
                 link: "/binary-tree-general/236.md",
               },
               {
+                text: "297.Serialize and Deserialize Binary Tree",
+                link: "/binary-tree-general/297.md",
+              },
+              {
                 text: "530.Minimum Absolute Difference in BST",
                 link: "/binary-tree-general/530.md",
               },
