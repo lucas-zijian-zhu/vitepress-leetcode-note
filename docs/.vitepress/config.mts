@@ -394,6 +394,20 @@ export default defineConfig({
                 text: "399.Evaluate Division",
                 link: "/graph-general/399.md",
               },
+              {
+                text: "909.Snakes and Ladders",
+                link: "/binary-tree-general/909.md",
+              },
+            ],
+          },
+          {
+            text: "Backtracking",
+            collapsed: true,
+            items: [
+              {
+                text: "39.Combination Sum",
+                link: "/backtracking/39.md",
+              },
             ],
           },
           {
