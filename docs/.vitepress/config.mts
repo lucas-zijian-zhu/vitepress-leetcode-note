@@ -447,7 +447,7 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
-                text: "139.Binary Tree Vertical Order Traversal",
+                text: "139.Word Break",
                 link: "1D-DP/139.md",
               },
               {
