@@ -405,6 +405,24 @@ export default defineConfig({
             ],
           },
           {
+            text: "Trie",
+            collapsed: true,
+            items: [
+              {
+                text: "208.Implement Trie (Prefix Tree)",
+                link: "/trie/208.md",
+              },
+              {
+                text: "211.Design Add and Search Words Data Structure",
+                link: "/trie/211.md",
+              },
+              {
+                text: "212.Word Search II",
+                link: "/trie/212.md",
+              },
+            ],
+          },
+          {
             text: "Backtracking",
             collapsed: true,
             items: [
