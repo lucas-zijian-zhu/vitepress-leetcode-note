@@ -371,6 +371,10 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "127.Word Ladder",
+                link: "/graph-general/127.md",
+              },
+              {
                 text: "130.Surrounded Regions",
                 link: "/graph-general/130.md",
               },
