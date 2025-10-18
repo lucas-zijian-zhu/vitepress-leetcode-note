@@ -395,8 +395,8 @@ export default defineConfig({
                 link: "/graph-general/399.md",
               },
               {
-                text: "909.Snakes and Ladders",
-                link: "/binary-tree-general/909.md",
+                text: "433.Minimum Genetic Mutation",
+                link: "/graph-general/433.md",
               },
             ],
           },
