@@ -427,8 +427,24 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "22.Generate Parentheses",
+                link: "/backtracking/22.md",
+              },
+              {
                 text: "39.Combination Sum",
                 link: "/backtracking/39.md",
+              },
+              {
+                text: "46.Permutations",
+                link: "/backtracking/46.md",
+              },
+              {
+                text: "77.Combinations",
+                link: "/backtracking/77.md",
+              },
+              {
+                text: "79.Word Search",
+                link: "/backtracking/79.md",
               },
             ],
           },
