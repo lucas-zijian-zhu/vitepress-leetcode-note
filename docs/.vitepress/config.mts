@@ -263,6 +263,10 @@ export default defineConfig({
                 link: "/linked-list/21.md",
               },
               {
+                text: "23.Merge k Sorted Lists",
+                link: "/linked-list/23.md",
+              },
+              {
                 text: "61.Rotate List",
                 link: "/linked-list/61.md"
               },
@@ -281,6 +285,10 @@ export default defineConfig({
               {
                 text: "141.Linked List Cycle",
                 link: "/linked-list/141.md"
+              },
+              {
+                text: "148.Sort List",
+                link: "/linked-list/148.md"
               }
             ],
           },
@@ -441,6 +449,10 @@ export default defineConfig({
               {
                 text: "46.Permutations",
                 link: "/backtracking/46.md",
+              },
+              {
+                text: "52.N-Queens II",
+                link: "/backtracking/52.md",
               },
               {
                 text: "77.Combinations",
