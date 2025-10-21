@@ -427,6 +427,10 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "17.Letter Combinations of a Phone Number",
+                link: "/backtracking/17.md",
+              },
+              {
                 text: "22.Generate Parentheses",
                 link: "/backtracking/22.md",
               },
