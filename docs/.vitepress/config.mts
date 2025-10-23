@@ -329,6 +329,10 @@ export default defineConfig({
                 link: "/binary-tree-general/106.md",
               },
               {
+                text: "112.Path Sum",
+                link: "/binary-tree-general/112.md",
+              },
+              {
                 text: "114.Flatten Binary Tree to Linked List",
                 link: "/binary-tree-general/114.md",
               },
