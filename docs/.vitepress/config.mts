@@ -59,6 +59,10 @@ export default defineConfig({
                 link: "/array-string/55.md",
               },
               {
+                text: "53.Maximum Subarray",
+                link: "/array-string/53.md",
+              },
+              {
                 text: "58.Length of Last Word",
                 link: "/array-string/58.md",
               },
