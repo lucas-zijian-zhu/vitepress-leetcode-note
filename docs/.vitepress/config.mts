@@ -122,6 +122,10 @@ export default defineConfig({
                 text: "392.Is Subsequence",
                 link: "/array-string/392.md",
               },
+              {
+                text: "918.Maximum Sum Circular Subarray",
+                link: "/array-string/918.md",
+              },
             ],
           },
           {
