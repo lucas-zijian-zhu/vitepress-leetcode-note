@@ -443,6 +443,16 @@ export default defineConfig({
             ],
           },
           {
+            text: "Binary Search",
+            collapsed: true,
+            items: [
+              {
+                text: "35.Search Insert Position",
+                link: "/binary-search/35.md",
+              },
+            ],
+          },
+          {
             text: "Backtracking",
             collapsed: true,
             items: [
