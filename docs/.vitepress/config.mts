@@ -443,16 +443,6 @@ export default defineConfig({
             ],
           },
           {
-            text: "Binary Search",
-            collapsed: true,
-            items: [
-              {
-                text: "35.Search Insert Position",
-                link: "/binary-search/35.md",
-              },
-            ],
-          },
-          {
             text: "Backtracking",
             collapsed: true,
             items: [
@@ -483,6 +473,24 @@ export default defineConfig({
               {
                 text: "79.Word Search",
                 link: "/backtracking/79.md",
+              },
+            ],
+          },
+          {
+            text: "Binary Search",
+            collapsed: true,
+            items: [
+              {
+                text: "35.Search Insert Position",
+                link: "/binary-search/35.md",
+              },
+              {
+                text: "74.Search a 2D Matrix",
+                link: "/binary-search/74.md",
+              },
+              {
+                text: "162.Find Peak Element",
+                link: "/binary-search/162.md",
               },
             ],
           },
