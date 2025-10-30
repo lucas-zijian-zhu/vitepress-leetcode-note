@@ -481,6 +481,14 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "33.Search in Rotated Sorted Array",
+                link: "/binary-search/33.md",
+              },
+              {
+                text: "34.Find First and Last Position of Element in Sorted Array",
+                link: "/binary-search/34.md",
+              },
+              {
                 text: "35.Search Insert Position",
                 link: "/binary-search/35.md",
               },
