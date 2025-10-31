@@ -481,6 +481,10 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "4.Median of Two Sorted Arrays",
+                link: "/binary-search/4.md",
+              },
+              {
                 text: "33.Search in Rotated Sorted Array",
                 link: "/binary-search/33.md",
               },
