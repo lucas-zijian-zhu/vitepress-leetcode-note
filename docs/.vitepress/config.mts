@@ -518,6 +518,20 @@ export default defineConfig({
                 text: "215.Kth Largest Element in an Array",
                 link: "/heap/215.md",
               },
+              {
+                text: "373.Find K Pairs with Smallest Sums",
+                link: "/heap/373.md",
+              },
+            ],
+          },
+          {
+            text: "Bit Manipulation",
+            collapsed: true,
+            items: [
+              {
+                text: "67.Add Binary",
+                link: "/bit-manipulation/67.md",
+              },
             ],
           },
           {
