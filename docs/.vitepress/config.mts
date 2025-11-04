@@ -532,6 +532,14 @@ export default defineConfig({
                 text: "67.Add Binary",
                 link: "/bit-manipulation/67.md",
               },
+              {
+                text: "190.Reverse Bits",
+                link: "/bit-manipulation/190.md",
+              },
+              {
+                text: "191.Number of 1 Bits",
+                link: "/bit-manipulation/191.md",
+              },
             ],
           },
           {
