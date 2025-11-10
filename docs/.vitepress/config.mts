@@ -537,6 +537,10 @@ export default defineConfig({
                 link: "/bit-manipulation/136.md",
               },
               {
+                text: "137.Single Number II",
+                link: "/bit-manipulation/137.md",
+              },
+              {
                 text: "190.Reverse Bits",
                 link: "/bit-manipulation/190.md",
               },
