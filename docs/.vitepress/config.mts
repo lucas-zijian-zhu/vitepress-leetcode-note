@@ -19,10 +19,6 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
-                text: "5.Longest Palindromic Substring",
-                link: "/array-string/5.md",
-              },
-              {
                 text: "11.Container With Most Water",
                 link: "/array-string/11.md",
               },
