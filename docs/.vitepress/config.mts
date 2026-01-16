@@ -212,6 +212,10 @@ export default defineConfig({
                 text: "383.Ransom Note",
                 link: "/hashmap/383.md",
               },
+              {
+                text: "560.Subarray Sum Equals K",
+                link: "/hashmap/560.md",
+              },
             ],
           },
           {
