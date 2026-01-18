@@ -27,45 +27,29 @@ export default defineConfig({
               items: [
                 {
                   text: "Promise",
-                  collapsed: true,
-                  items: [
-                    {
-                      text: "中文",
-                      link: "/reading-notes/web/promise.md",
-                    },
-                    {
-                      text: "English",
-                      link: "/reading-notes/web/promise.en.md",
-                    },
-                  ],
+                  link: "/reading-notes/web/promise.md",
                 },
                 {
                   text: "JS 多线程",
-                  collapsed: true,
-                  items: [
-                    {
-                      text: "中文",
-                      link: "/reading-notes/web/js-multithreading.md",
-                    },
-                    {
-                      text: "English",
-                      link: "/reading-notes/web/js-multithreading.en.md",
-                    },
-                  ],
+                  link: "/reading-notes/web/js-multithreading.md",
                 },
                 {
                   text: "Workers",
-                  collapsed: true,
-                  items: [
-                    {
-                      text: "中文",
-                      link: "/reading-notes/web/workers.md",
-                    },
-                    {
-                      text: "English",
-                      link: "/reading-notes/web/workers.en.md",
-                    },
-                  ],
+                  link: "/reading-notes/web/workers.md",
+                },
+                {
+                  text: "离线化（Offline / PWA）",
+                  link: "/reading-notes/web/offline.md",
+                },
+              ],
+            },
+            {
+              text: "Android",
+              collapsed: false,
+              items: [
+                {
+                  text: "Context / Leak / Async / Parcelable",
+                  link: "/reading-notes/android/android.md",
                 },
               ],
             },

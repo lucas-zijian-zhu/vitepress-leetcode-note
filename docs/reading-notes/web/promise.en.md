@@ -136,6 +136,44 @@ async function parallel() {
 }
 ```
 
+### 6.3 When to use `.then()` vs `async/await`
+
+Rule of thumb: use **`async/await` for control flow**, and **`.then()` for pipelines/composition**.
+
+Prefer `async/await` when:
+
+- **Multi-step sequential logic** with lots of branching / early returns
+- You want **`try/catch/finally`** to read like normal synchronous code
+- You need to **`await` inside loops** (for true parallelism, still use `Promise.all`)
+
+Prefer `.then()` when:
+
+- It’s a **small one- or two-step transformation** and you don’t want to wrap another `async` function
+- You like a **pipeline style**: “input → output” transformations
+- You’re writing a **utility/library** that naturally returns a Promise chain (callers decide how to handle errors)
+
+Same logic, two styles:
+
+```ts
+// then: pipeline style
+function loadUserThen(id: string) {
+  return fetch(`/users/${id}`)
+    .then((r) => {
+      if (!r.ok) throw new Error("bad response");
+      return r.json() as Promise<{ name: string }>;
+    })
+    .then((u) => u.name);
+}
+
+// async/await: control-flow style
+async function loadUserAwait(id: string) {
+  const r = await fetch(`/users/${id}`);
+  if (!r.ok) throw new Error("bad response");
+  const u = (await r.json()) as { name: string };
+  return u.name;
+}
+```
+
 ## 7. Combinators: `all / allSettled / race / any`
 
 Helper:
@@ -256,10 +294,13 @@ function runPool(tasks, limit = 4) {
         const task = queue.shift();
         running++;
 
-        task().finally(() => {
-          running--;
-          runNext(); // ⭐ whoever finishes first refills the pool
-        });
+        Promise.resolve()
+          .then(task) // normalize sync/async: sync throws become rejected
+          .catch(() => {}) // avoid unhandled rejections (or collect/report errors)
+          .finally(() => {
+            running--;
+            runNext(); // ⭐ whoever finishes first refills the pool
+          });
       }
     }
 

@@ -7,11 +7,13 @@
 ### Web
 
 - [Promise（中文）：用法、组合、异常处理与并发控制](/reading-notes/web/promise.md)
-- [Promise (English)](/reading-notes/web/promise.en.md)
 - [JS 多任务与多线程（中文）：浏览器 vs Node.js](/reading-notes/web/js-multithreading.md)
-- [JS Concurrency and Multithreading (English)](/reading-notes/web/js-multithreading.en.md)
 - [Workers（中文）：Web / Shared / Service Worker](/reading-notes/web/workers.md)
-- [Workers (English)](/reading-notes/web/workers.en.md)
+- [Web 离线化（中文）：Offline-first / PWA 实现笔记](/reading-notes/web/offline.md)
+
+### Android
+
+- [Android：Context、内存泄露、异步方式、Serializable vs Parcelable](/reading-notes/android/android.md)
 
 ## 写作约定
 

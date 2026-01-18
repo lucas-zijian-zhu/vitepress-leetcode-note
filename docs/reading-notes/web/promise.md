@@ -173,6 +173,44 @@ async function parallel() {
 }
 ```
 
+### 6.3 什么时候用 `.then()`，什么时候用 `async/await`
+
+经验法则：**写“控制流”用 `async/await`，写“流水线/组合”用 `.then()`**。
+
+更适合用 `async/await` 的场景：
+
+- **多步顺序逻辑**：中间要 `return/continue/break`、条件分支很多
+- **需要 `try/catch/finally`**：错误处理、资源清理更直观
+- **循环里要 await**：比如按顺序重试、分页拉取（注意并发场景要用 `Promise.all`）
+
+更适合用 `.then()` 的场景：
+
+- **简单的一两步转换**：不想为了 `await` 再包一层 `async function`
+- **函数式/管道式组合**：`then` 链清晰表达“输入 → 输出”的变换
+- **库/工具函数返回 Promise 链**：避免在内部引入 `try/catch` 风格（由调用方决定怎么处理）
+
+对照例子（同样的语义，两种写法都可以）：
+
+```ts
+// then：更像“流水线”
+function loadUserThen(id: string) {
+  return fetch(`/users/${id}`)
+    .then((r) => {
+      if (!r.ok) throw new Error("bad response");
+      return r.json() as Promise<{ name: string }>;
+    })
+    .then((u) => u.name);
+}
+
+// async/await：更像“控制流”
+async function loadUserAwait(id: string) {
+  const r = await fetch(`/users/${id}`);
+  if (!r.ok) throw new Error("bad response");
+  const u = (await r.json()) as { name: string };
+  return u.name;
+}
+```
+
 ## 7. 组合方法（all / allSettled / race / any）
 
 为了让示例可运行，先定义一个工具函数：
@@ -300,10 +338,13 @@ function runPool(tasks, limit = 4) {
         const task = queue.shift();
         running++;
 
-        task().finally(() => {
-          running--;
-          runNext(); // ⭐ 谁先结束，谁触发补位
-        });
+        Promise.resolve()
+          .then(task) // 统一同步/异步：同步 throw 也会变成 rejected
+          .catch(() => {}) // 避免未处理 rejected（可改成错误收集/上报）
+          .finally(() => {
+            running--;
+            runNext(); // ⭐ 谁先结束，谁触发补位
+          });
       }
     }
 
