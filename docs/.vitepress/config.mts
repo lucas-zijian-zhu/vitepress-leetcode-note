@@ -2,8 +2,8 @@ import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Leetcode Notes",
-  description: "A collection of my algorithm notes",
+  title: "My Notes",
+  description: "Algorithm and reading notes",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
 
@@ -11,13 +11,74 @@ export default defineConfig({
       provider: "local",
     },
 
-    sidebar: [
-      {
-        items: [
-          {
-            text: "Array and String",
-            collapsed: true,
-            items: [
+    sidebar: {
+      "/reading-notes/": [
+        {
+          text: "Reading Notes",
+          collapsed: false,
+          items: [
+            {
+              text: "Overview",
+              link: "/reading-notes/",
+            },
+            {
+              text: "Web",
+              collapsed: false,
+              items: [
+                {
+                  text: "Promise",
+                  collapsed: true,
+                  items: [
+                    {
+                      text: "中文",
+                      link: "/reading-notes/web/promise.md",
+                    },
+                    {
+                      text: "English",
+                      link: "/reading-notes/web/promise.en.md",
+                    },
+                  ],
+                },
+                {
+                  text: "JS 多线程",
+                  collapsed: true,
+                  items: [
+                    {
+                      text: "中文",
+                      link: "/reading-notes/web/js-multithreading.md",
+                    },
+                    {
+                      text: "English",
+                      link: "/reading-notes/web/js-multithreading.en.md",
+                    },
+                  ],
+                },
+                {
+                  text: "Workers",
+                  collapsed: true,
+                  items: [
+                    {
+                      text: "中文",
+                      link: "/reading-notes/web/workers.md",
+                    },
+                    {
+                      text: "English",
+                      link: "/reading-notes/web/workers.en.md",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "/": [
+        {
+          items: [
+            {
+              text: "Array and String",
+              collapsed: true,
+              items: [
               {
                 text: "11.Container With Most Water",
                 link: "/array-string/11.md",
@@ -576,55 +637,56 @@ export default defineConfig({
               },
             ],
           },
-          {
-            text: "Multidimensional DP",
-            collapsed: true,
-            items: [
-              {
-                text: "5.Longest Palindromic Substring",
-                link: "multidimensional-dp/5.md",
-              },
-              {
-                text: "63.Unique Paths II",
-                link: "multidimensional-dp/63.md",
-              },
-              {
-                text: "64.Minimum Path Sum",
-                link: "multidimensional-dp/64.md",
-              },
-              {
-                text: "72.Edit Distance",
-                link: "multidimensional-dp/72.md",
-              },
-              {
-                text: "97.Interleaving String",
-                link: "multidimensional-dp/97.md",
-              },
-              {
-                text: "120.Triangle",
-                link: "multidimensional-dp/120.md",
-              },
-              {
-                text: "123.Best Time to Buy and Sell Stock III",
-                link: "multidimensional-dp/123.md",
-              },
-              {
-                text: "188.Best Time to Buy and Sell Stock IV",
-                link: "multidimensional-dp/188.md",
-              },
-              {
-                text: "221.Maximal Square",
-                link: "multidimensional-dp/221.md",
-              },
-              {
-                text: "309.Best Time to Buy and Sell Stock with Cooldown",
-                link: "multidimensional-dp/309.md",
-              },
-            ],
-          },
-        ],
-      },
-    ],
+            {
+              text: "Multidimensional DP",
+              collapsed: true,
+              items: [
+                {
+                  text: "5.Longest Palindromic Substring",
+                  link: "multidimensional-dp/5.md",
+                },
+                {
+                  text: "63.Unique Paths II",
+                  link: "multidimensional-dp/63.md",
+                },
+                {
+                  text: "64.Minimum Path Sum",
+                  link: "multidimensional-dp/64.md",
+                },
+                {
+                  text: "72.Edit Distance",
+                  link: "multidimensional-dp/72.md",
+                },
+                {
+                  text: "97.Interleaving String",
+                  link: "multidimensional-dp/97.md",
+                },
+                {
+                  text: "120.Triangle",
+                  link: "multidimensional-dp/120.md",
+                },
+                {
+                  text: "123.Best Time to Buy and Sell Stock III",
+                  link: "multidimensional-dp/123.md",
+                },
+                {
+                  text: "188.Best Time to Buy and Sell Stock IV",
+                  link: "multidimensional-dp/188.md",
+                },
+                {
+                  text: "221.Maximal Square",
+                  link: "multidimensional-dp/221.md",
+                },
+                {
+                  text: "309.Best Time to Buy and Sell Stock with Cooldown",
+                  link: "multidimensional-dp/309.md",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
 
     socialLinks: [
       {
