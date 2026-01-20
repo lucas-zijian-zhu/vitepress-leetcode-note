@@ -276,6 +276,10 @@ export default defineConfig({
                 link: "/intervals/57.md",
               },
               {
+                text: "435.Non-overlapping Intervals",
+                link: "/intervals/435.md",
+              },
+              {
                 text: "452.Add Overloaded Operators",
                 link: "/intervals/452.md"
               }
