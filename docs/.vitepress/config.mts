@@ -172,6 +172,14 @@ export default defineConfig({
                 link: "/array-string/455.md",
               },
               {
+                text: "605.Can Place Flowers",
+                link: "/array-string/605.md",
+              },
+              {
+                text: "763.Partition Labels",
+                link: "/array-string/763.md",
+              },
+              {
                 text: "918.Maximum Sum Circular Subarray",
                 link: "/array-string/918.md",
               },
