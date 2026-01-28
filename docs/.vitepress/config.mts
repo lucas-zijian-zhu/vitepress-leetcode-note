@@ -168,12 +168,20 @@ export default defineConfig({
                 link: "/array-string/392.md",
               },
               {
+                text: "406.Queue Reconstruction by Height",
+                link: "/array-string/406.md",
+              },
+              {
                 text: "455.Assign Cookies",
                 link: "/array-string/455.md",
               },
               {
                 text: "605.Can Place Flowers",
                 link: "/array-string/605.md",
+              },
+              {
+                text: "665.Non-decreasing Array",
+                link: "/array-string/665.md",
               },
               {
                 text: "763.Partition Labels",
