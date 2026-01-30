@@ -9,6 +9,7 @@
 - [Promise（中文）：用法、组合、异常处理与并发控制](/reading-notes/web/promise.md)
 - [JS 多任务与多线程（中文）：浏览器 vs Node.js](/reading-notes/web/js-multithreading.md)
 - [Workers（中文）：Web / Shared / Service Worker](/reading-notes/web/workers.md)
+- [JS 字符串（中文）：常用方法与操作 + formatText 例题](/reading-notes/web/js-string.md)
 - [Web 离线化（中文）：Offline-first / PWA 实现笔记](/reading-notes/web/offline.md)
 
 ### Android

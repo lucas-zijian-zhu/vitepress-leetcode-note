@@ -1,9 +1,28 @@
 import { defineConfig } from "vitepress";
 
+// Workaround: custom highlight avoids "Shiki instance has been disposed" in dev/HMR.
+// Remove this block if a future VitePress/Shiki fix makes it unnecessary.
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "My Notes",
   description: "Algorithm and reading notes",
+
+  markdown: {
+    highlight: (str, lang) => {
+      const escaped = escapeHtml(str);
+      const langClass = lang ? ` language-${lang}` : "";
+      return `<pre class="vp-code"><code class="${langClass}">${escaped}</code></pre>`;
+    },
+  },
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
 
@@ -36,6 +55,10 @@ export default defineConfig({
                 {
                   text: "Workers",
                   link: "/reading-notes/web/workers.md",
+                },
+                {
+                  text: "JS 字符串",
+                  link: "/reading-notes/web/js-string.md",
                 },
                 {
                   text: "离线化（Offline / PWA）",
