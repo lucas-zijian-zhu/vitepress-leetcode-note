@@ -372,6 +372,10 @@ export default defineConfig({
                 link: "/linked-list/141.md"
               },
               {
+                text: "142.Linked List Cycle II",
+                link: "/linked-list/142.md"
+              },
+              {
                 text: "148.Sort List",
                 link: "/linked-list/148.md"
               }
