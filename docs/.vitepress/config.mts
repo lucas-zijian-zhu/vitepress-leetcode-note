@@ -68,6 +68,10 @@ export default defineConfig({
               collapsed: true,
               items: [
               {
+                text: "5.Longest Palindromic Substring",
+                link: "/array-string/5.md",
+              },
+              {
                 text: "11.Container With Most Water",
                 link: "/array-string/11.md",
               },
@@ -168,6 +172,10 @@ export default defineConfig({
                 link: "/array-string/274.md",
               },
               {
+                text: "340.Longest Substring with At Most K Distinct Characters",
+                link: "/array-string/340.md",
+              },
+              {
                 text: "392.Is Subsequence",
                 link: "/array-string/392.md",
               },
@@ -180,12 +188,24 @@ export default defineConfig({
                 link: "/array-string/455.md",
               },
               {
+                text: "524.Longest Word in Dictionary through Deleting",
+                link: "/array-string/524.md",
+              },
+              {
                 text: "605.Can Place Flowers",
                 link: "/array-string/605.md",
               },
               {
+                text: "633.Sum of Square Numbers",
+                link: "/array-string/633.md",
+              },
+              {
                 text: "665.Non-decreasing Array",
                 link: "/array-string/665.md",
+              },
+              {
+                text: "680.Valid Palindrome II",
+                link: "/array-string/680.md",
               },
               {
                 text: "763.Partition Labels",
@@ -653,10 +673,6 @@ export default defineConfig({
               text: "Multidimensional DP",
               collapsed: true,
               items: [
-                {
-                  text: "5.Longest Palindromic Substring",
-                  link: "multidimensional-dp/5.md",
-                },
                 {
                   text: "63.Unique Paths II",
                   link: "multidimensional-dp/63.md",
