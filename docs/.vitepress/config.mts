@@ -602,12 +602,24 @@ export default defineConfig({
                 link: "/binary-search/74.md",
               },
               {
+                text: "81.Search in Rotated Sorted Array II",
+                link: "/binary-search/81.md",
+              },
+              {
                 text: "153.Find Minimum in Rotated Sorted Array",
                 link: "/binary-search/153.md",
               },
               {
+                text: "154.Find Minimum in Rotated Sorted Array II",
+                link: "/binary-search/154.md",
+              },
+              {
                 text: "162.Find Peak Element",
                 link: "/binary-search/162.md",
+              },
+              {
+                text: "540.Single Element in a Sorted Array",
+                link: "/binary-search/540.md",
               },
             ],
           },
