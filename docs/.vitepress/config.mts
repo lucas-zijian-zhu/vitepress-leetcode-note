@@ -22,6 +22,16 @@ export default defineConfig({
               link: "/reading-notes/",
             },
             {
+              text: "数据结构",
+              collapsed: false,
+              items: [
+                {
+                  text: "RingBuffer 与 LRU 实现",
+                  link: "/reading-notes/data-structure/ring-buffer-lru.md",
+                },
+              ],
+            },
+            {
               text: "Web",
               collapsed: false,
               items: [
@@ -42,6 +52,10 @@ export default defineConfig({
                   link: "/reading-notes/web/js-string.md",
                 },
                 {
+                  text: "JS 练习笔记（函数、数组、异步）",
+                  link: "/reading-notes/web/js-practice-notes.md",
+                },
+                {
                   text: "离线化（Offline / PWA）",
                   link: "/reading-notes/web/offline.md",
                 },
@@ -54,6 +68,22 @@ export default defineConfig({
                 {
                   text: "Context / Leak / Async / Parcelable",
                   link: "/reading-notes/android/android.md",
+                },
+                {
+                  text: "Android + Kotlin 知识点",
+                  link: "/reading-notes/android/android-points.md",
+                },
+                {
+                  text: "Android 架构：单例、MVVM、Flow、Retrofit/Room、DI",
+                  link: "/reading-notes/android/android-architecture.md",
+                },
+                {
+                  text: "MVVM 完整示例：用户卡片 + 订单列表（XML / Compose）",
+                  link: "/reading-notes/android/mvvm-example-user-orders.md",
+                },
+                {
+                  text: "Jetpack Compose 常用组件",
+                  link: "/reading-notes/android/compose-components.md",
                 },
               ],
             },
@@ -108,16 +138,20 @@ export default defineConfig({
                 link: "/array-string/45.md",
               },
               {
-                text: "55.Jump Game",
-                link: "/array-string/55.md",
-              },
-              {
                 text: "53.Maximum Subarray",
                 link: "/array-string/53.md",
               },
               {
+                text: "55.Jump Game",
+                link: "/array-string/55.md",
+              },
+              {
                 text: "58.Length of Last Word",
                 link: "/array-string/58.md",
+              },
+              {
+                text: "75.Sort Colors",
+                link: "/array-string/75.md",
               },
               {
                 text: "80.Remove Duplicates from Sorted Array II",
@@ -523,6 +557,14 @@ export default defineConfig({
                 text: "433.Minimum Genetic Mutation",
                 link: "/graph-general/433.md",
               },
+              {
+                text: "695.Max Area of Island",
+                link: "/graph-general/695.md",
+              },
+              {
+                text: "Nuclear Transformation (BFS)",
+                link: "/graph-general/nuclear-transformation.md",
+              },
             ],
           },
           {
@@ -540,6 +582,10 @@ export default defineConfig({
               {
                 text: "212.Word Search II",
                 link: "/trie/212.md",
+              },
+              {
+                text: "T9 Contacts / Phone Keypad Search",
+                link: "/trie/contacts-phone-keypad.md",
               },
             ],
           },
@@ -632,8 +678,16 @@ export default defineConfig({
                 link: "/heap/215.md",
               },
               {
+                text: "347.Top K Frequent Elements",
+                link: "/heap/347.md",
+              },
+              {
                 text: "373.Find K Pairs with Smallest Sums",
                 link: "/heap/373.md",
+              },
+              {
+                text: "451.Sort Characters By Frequency",
+                link: "/heap/451.md",
               },
             ],
           },

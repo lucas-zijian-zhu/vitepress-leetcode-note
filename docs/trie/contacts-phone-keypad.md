@@ -1,0 +1,461 @@
+# T9 Contacts / Phone Keypad Search (Custom — Trie + DFS)
+
+<Badge type="warning" text="Medium" />
+
+Given a list of contacts (lowercase strings) and a phone keypad mapping (2–9 → letters), implement:
+
+1. **Prefix search**: Return all contacts that start with a given prefix.
+2. **Digit search**: Given a sequence of digits (e.g. `"58"`), return all contacts that can be formed by the corresponding letters on the keypad (`5` = jkl, `8` = tuv → e.g. `"lu"`, `"lv"` → `luc`, `lucas`).
+
+**Keypad mapping:**
+
+| Digit | Letters |
+|-------|---------|
+| 2 | abc |
+| 3 | def |
+| 4 | ghi |
+| 5 | jkl |
+| 6 | mno |
+| 7 | pqrs |
+| 8 | tuv |
+| 9 | wxyz |
+
+**Example:**
+
+```
+Contacts: ['lucas', 'luc', 'zijian']
+Prefix "lu" → ['luc', 'lucas']
+Digits "58" → ['luc', 'lucas']  (5→l, 8→u → "lu" prefix)
+```
+
+## 💡 Approach: Trie + DFS
+
+### Intuition
+
+1. **Trie**: Store contacts for efficient prefix lookup.
+2. **Prefix search**: Walk to the prefix node, then DFS to collect all words under that subtree.
+3. **Digit search**: For each digit, try each possible letter; DFS into the Trie only when the child exists. When digits are exhausted, collect all words from the current node downward.
+
+### Algorithm
+
+1. **Build Trie** from contacts (26 children per node, `a`–`z`).
+2. **getContactsWithPrefix**: Traverse to prefix; if path exists, DFS from that node, appending characters to `path`, and push when `isEnd` is true.
+3. **searchContactsByDigits**: DFS with `(pos, node, path)`. When `pos === digits.length`, call `collectAllWords(node, path, result)`. Otherwise, for each letter of `keypad[digits[pos]]`, if `node.children[idx]` exists, recurse.
+
+### Key Points
+
+- Use `children[26]` indexed by `char - 'a'`.
+- Digit search branches on multiple letters per digit; prune when Trie has no child.
+- `collectAllWords` gathers all words in the subtree (for "58" we need luc, lucas, etc.).
+
+## Code
+
+::: code-group
+
+```typescript [TypeScript]
+class TrieNode {
+    children: (TrieNode | null)[]
+    isEnd: boolean
+
+    constructor() {
+        this.children = new Array(26).fill(null)
+        this.isEnd = false
+    }
+}
+
+class Trie {
+    root: TrieNode
+    constructor(root: TrieNode) {
+        this.root = root
+    }
+}
+
+const keypad: Record<string, string> = {
+    '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',
+    '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'
+}
+
+function generateTrie(contacts: string[], root: TrieNode): void {
+    for (const contact of contacts) {
+        let cur = root
+        for (let i = 0; i < contact.length; i++) {
+            const index = contact[i].charCodeAt(0) - 'a'.charCodeAt(0)
+            if (!cur.children[index]) {
+                cur.children[index] = new TrieNode()
+            }
+            cur = cur.children[index]!
+        }
+        cur.isEnd = true
+    }
+}
+
+function getContactsWithPrefix(trie: Trie, prefix: string): string[] {
+    let cur: TrieNode = trie.root
+    for (const s of prefix) {
+        const index = s.charCodeAt(0) - 'a'.charCodeAt(0)
+        if (!cur.children[index]) return []
+        cur = cur.children[index]!
+    }
+    const results: string[] = []
+    const dfs = (node: TrieNode, path: string) => {
+        if (node.isEnd) results.push(path)
+        for (let i = 0; i < 26; i++) {
+            if (node.children[i]) {
+                dfs(node.children[i]!, path + String.fromCharCode(97 + i))
+            }
+        }
+    }
+    dfs(cur, prefix)
+    return results
+}
+
+function collectAllWords(node: TrieNode, path: string, result: string[]): void {
+    if (node.isEnd) result.push(path)
+    for (let i = 0; i < 26; i++) {
+        if (node.children[i]) {
+            collectAllWords(
+                node.children[i]!,
+                path + String.fromCharCode(97 + i),
+                result
+            )
+        }
+    }
+}
+
+function searchContactsByDigits(digits: string, trie: Trie): string[] {
+    const result: string[] = []
+    const dfs = (pos: number, node: TrieNode, path: string) => {
+        if (pos === digits.length) {
+            collectAllWords(node, path, result)
+            return
+        }
+        const letters = keypad[digits[pos]]
+        if (!letters) return
+        for (const ch of letters) {
+            const idx = ch.charCodeAt(0) - 97
+            const child = node.children[idx]
+            if (child) {
+                dfs(pos + 1, child, path + ch)
+            }
+        }
+    }
+    dfs(0, trie.root, '')
+    return result
+}
+
+// Usage
+// const contacts = ['lucas', 'luc', 'zijian']
+// const trie = new Trie(new TrieNode())
+// generateTrie(contacts, trie.root)
+// getContactsWithPrefix(trie, 'lu')        // ['luc', 'lucas']
+// searchContactsByDigits('58', trie)       // ['luc', 'lucas']
+```
+
+```kotlin [Kotlin]
+class TrieNode {
+    val children = arrayOfNulls<TrieNode>(26)
+    var isEnd = false
+}
+
+class Trie(val root: TrieNode)
+
+val keypad = mapOf(
+    '2' to "abc", '3' to "def", '4' to "ghi", '5' to "jkl",
+    '6' to "mno", '7' to "pqrs", '8' to "tuv", '9' to "wxyz"
+)
+
+fun generateTrie(contacts: List<String>, root: TrieNode) {
+    for (contact in contacts) {
+        var cur = root
+        for (c in contact) {
+            val idx = c - 'a'
+            if (cur.children[idx] == null) {
+                cur.children[idx] = TrieNode()
+            }
+            cur = cur.children[idx]!!
+        }
+        cur.isEnd = true
+    }
+}
+
+fun getContactsWithPrefix(trie: Trie, prefix: String): List<String> {
+    var cur = trie.root
+    for (c in prefix) {
+        val idx = c - 'a'
+        if (cur.children[idx] == null) return emptyList()
+        cur = cur.children[idx]!!
+    }
+    val results = mutableListOf<String>()
+    fun dfs(node: TrieNode, path: String) {
+        if (node.isEnd) results.add(path)
+        for (i in 0 until 26) {
+            node.children[i]?.let { dfs(it, path + ('a' + i)) }
+        }
+    }
+    dfs(cur, prefix)
+    return results
+}
+
+fun collectAllWords(node: TrieNode, path: String, result: MutableList<String>) {
+    if (node.isEnd) result.add(path)
+    for (i in 0 until 26) {
+        node.children[i]?.let {
+            collectAllWords(it, path + ('a' + i), result)
+        }
+    }
+}
+
+fun searchContactsByDigits(digits: String, trie: Trie): List<String> {
+    val result = mutableListOf<String>()
+    fun dfs(pos: Int, node: TrieNode, path: String) {
+        if (pos == digits.length) {
+            collectAllWords(node, path, result)
+            return
+        }
+        val letters = keypad[digits[pos]] ?: return
+        for (ch in letters) {
+            val idx = ch - 'a'
+            val child = node.children[idx]
+            if (child != null) {
+                dfs(pos + 1, child, path + ch)
+            }
+        }
+    }
+    dfs(0, trie.root, "")
+    return result
+}
+```
+
+```java [Java]
+class TrieNode {
+    TrieNode[] children = new TrieNode[26];
+    boolean isEnd = false;
+}
+
+class Trie {
+    TrieNode root;
+    Trie(TrieNode root) { this.root = root; }
+}
+
+class Solution {
+    private static final String[] KEYPAD = {
+        "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"
+    };
+
+    void generateTrie(String[] contacts, TrieNode root) {
+        for (String contact : contacts) {
+            TrieNode cur = root;
+            for (char c : contact.toCharArray()) {
+                int idx = c - 'a';
+                if (cur.children[idx] == null) {
+                    cur.children[idx] = new TrieNode();
+                }
+                cur = cur.children[idx];
+            }
+            cur.isEnd = true;
+        }
+    }
+
+    List<String> getContactsWithPrefix(Trie trie, String prefix) {
+        TrieNode cur = trie.root;
+        for (char c : prefix.toCharArray()) {
+            int idx = c - 'a';
+            if (cur.children[idx] == null) return List.of();
+            cur = cur.children[idx];
+        }
+        List<String> results = new ArrayList<>();
+        dfsCollect(cur, prefix, results);
+        return results;
+    }
+
+    private void dfsCollect(TrieNode node, String path, List<String> results) {
+        if (node.isEnd) results.add(path);
+        for (int i = 0; i < 26; i++) {
+            if (node.children[i] != null) {
+                dfsCollect(node.children[i], path + (char) ('a' + i), results);
+            }
+        }
+    }
+
+    private void collectAllWords(TrieNode node, String path, List<String> result) {
+        if (node.isEnd) result.add(path);
+        for (int i = 0; i < 26; i++) {
+            if (node.children[i] != null) {
+                collectAllWords(node.children[i], path + (char) ('a' + i), result);
+            }
+        }
+    }
+
+    List<String> searchContactsByDigits(String digits, Trie trie) {
+        List<String> result = new ArrayList<>();
+        dfsDigits(0, trie.root, "", digits, result);
+        return result;
+    }
+
+    private void dfsDigits(int pos, TrieNode node, String path, String digits, List<String> result) {
+        if (pos == digits.length) {
+            collectAllWords(node, path, result);
+            return;
+        }
+        String letters = KEYPAD[digits.charAt(pos) - '0'];
+        if (letters == null || letters.isEmpty()) return;
+        for (char ch : letters.toCharArray()) {
+            int idx = ch - 'a';
+            if (node.children[idx] != null) {
+                dfsDigits(pos + 1, node.children[idx], path + ch, digits, result);
+            }
+        }
+    }
+}
+```
+
+```swift [Swift]
+class TrieNode {
+    var children: [TrieNode?] = Array(repeating: nil, count: 26)
+    var isEnd = false
+}
+
+class Trie {
+    let root: TrieNode
+    init(_ root: TrieNode) { self.root = root }
+}
+
+let keypad: [Character: String] = [
+    "2": "abc", "3": "def", "4": "ghi", "5": "jkl",
+    "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"
+]
+
+func generateTrie(_ contacts: [String], _ root: TrieNode) {
+    for contact in contacts {
+        var cur = root
+        for c in contact {
+            let idx = Int(c.asciiValue! - Character("a").asciiValue!)
+            if cur.children[idx] == nil {
+                cur.children[idx] = TrieNode()
+            }
+            cur = cur.children[idx]!
+        }
+        cur.isEnd = true
+    }
+}
+
+func getContactsWithPrefix(_ trie: Trie, _ prefix: String) -> [String] {
+    var cur = trie.root
+    for c in prefix {
+        let idx = Int(c.asciiValue! - Character("a").asciiValue!)
+        guard let node = cur.children[idx] else { return [] }
+        cur = node
+    }
+    var results: [String] = []
+    func dfs(_ node: TrieNode, _ path: String) {
+        if node.isEnd { results.append(path) }
+        for i in 0..<26 {
+            if let child = node.children[i] {
+                dfs(child, path + String(UnicodeScalar(UInt32(97 + i))!))
+            }
+        }
+    }
+    dfs(cur, prefix)
+    return results
+}
+
+func collectAllWords(_ node: TrieNode, _ path: String, _ result: inout [String]) {
+    if node.isEnd { result.append(path) }
+    for i in 0..<26 {
+        if let child = node.children[i] {
+            collectAllWords(child, path + String(UnicodeScalar(UInt32(97 + i))!), &result)
+        }
+    }
+}
+
+func searchContactsByDigits(_ digits: String, _ trie: Trie) -> [String] {
+    var result: [String] = []
+    func dfs(pos: Int, node: TrieNode, path: String) {
+        if pos == digits.count {
+            collectAllWords(node, path, &result)
+            return
+        }
+        let d = digits[digits.index(digits.startIndex, offsetBy: pos)]
+        guard let letters = keypad[d] else { return }
+        for ch in letters {
+            let idx = Int(ch.asciiValue! - Character("a").asciiValue!)
+            if let child = node.children[idx] {
+                dfs(pos: pos + 1, node: child, path: path + String(ch))
+            }
+        }
+    }
+    dfs(pos: 0, node: trie.root, path: "")
+    return result
+}
+```
+
+```python [Python]
+class TrieNode:
+    def __init__(self):
+        self.children = [None] * 26
+        self.is_end = False
+
+class Trie:
+    def __init__(self, root: TrieNode):
+        self.root = root
+
+KEYPAD = {
+    '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',
+    '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'
+}
+
+def generate_trie(contacts: list[str], root: TrieNode) -> None:
+    for contact in contacts:
+        cur = root
+        for c in contact:
+            idx = ord(c) - ord('a')
+            if cur.children[idx] is None:
+                cur.children[idx] = TrieNode()
+            cur = cur.children[idx]
+        cur.is_end = True
+
+def get_contacts_with_prefix(trie: Trie, prefix: str) -> list[str]:
+    cur = trie.root
+    for c in prefix:
+        idx = ord(c) - ord('a')
+        if cur.children[idx] is None:
+            return []
+        cur = cur.children[idx]
+
+    results: list[str] = []
+
+    def dfs(node: TrieNode, path: str) -> None:
+        if node.is_end:
+            results.append(path)
+        for i in range(26):
+            if node.children[i]:
+                dfs(node.children[i], path + chr(97 + i))
+
+    dfs(cur, prefix)
+    return results
+
+def collect_all_words(node: TrieNode, path: str, result: list[str]) -> None:
+    if node.is_end:
+        result.append(path)
+    for i in range(26):
+        if node.children[i]:
+            collect_all_words(node.children[i], path + chr(97 + i), result)
+
+def search_contacts_by_digits(digits: str, trie: Trie) -> list[str]:
+    result: list[str] = []
+
+    def dfs(pos: int, node: TrieNode, path: str) -> None:
+        if pos == len(digits):
+            collect_all_words(node, path, result)
+            return
+        letters = KEYPAD.get(digits[pos], "")
+        for ch in letters:
+            idx = ord(ch) - ord('a')
+            if node.children[idx]:
+                dfs(pos + 1, node.children[idx], path + ch)
+
+    dfs(0, trie.root, "")
+    return result
+```
+
+:::

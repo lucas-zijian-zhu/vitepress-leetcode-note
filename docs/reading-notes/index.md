@@ -4,6 +4,10 @@
 
 ## 目录
 
+### 数据结构
+
+- [RingBuffer 与 LRU 实现（中文）](/reading-notes/data-structure/ring-buffer-lru.md)
+
 ### Web
 
 - [Promise（中文）：用法、组合、异常处理与并发控制](/reading-notes/web/promise.md)
@@ -15,6 +19,8 @@
 ### Android
 
 - [Android：Context、内存泄露、异步方式、Serializable vs Parcelable](/reading-notes/android/android.md)
+- [Android + Kotlin 知识点](/reading-notes/android/android-points.md)
+- [Android 架构：单例、MVVM、Flow、Retrofit/Room、DI](/reading-notes/android/android-architecture.md)
 
 ## 写作约定
 
