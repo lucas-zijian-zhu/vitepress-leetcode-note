@@ -206,10 +206,6 @@ export default defineConfig({
                 link: "/array-string/274.md",
               },
               {
-                text: "340.Longest Substring with At Most K Distinct Characters",
-                link: "/array-string/340.md",
-              },
-              {
                 text: "392.Is Subsequence",
                 link: "/array-string/392.md",
               },
@@ -266,6 +262,10 @@ export default defineConfig({
               {
                 text: "209.Minimum Size Subarray Sum",
                 link: "/sliding-window/209.md",
+              },
+              {
+                text: "340.Longest Substring with At Most K Distinct Characters",
+                link: "/sliding-window/340.md",
               },
             ],
           },
@@ -554,12 +554,24 @@ export default defineConfig({
                 link: "/graph-general/399.md",
               },
               {
+                text: "417.Pacific Atlantic Water Flow",
+                link: "/graph-general/417.md",
+              },
+              {
                 text: "433.Minimum Genetic Mutation",
                 link: "/graph-general/433.md",
               },
               {
+                text: "547.Number of Provinces",
+                link: "/graph-general/547.md",
+              },
+              {
                 text: "695.Max Area of Island",
                 link: "/graph-general/695.md",
+              },
+              {
+                text: "1091.Shortest Path in Binary Matrix",
+                link: "/graph-general/1091.md",
               },
               {
                 text: "Nuclear Transformation (BFS)",
