@@ -56,6 +56,22 @@ export default defineConfig({
                   link: "/reading-notes/web/js-practice-notes.md",
                 },
                 {
+                  text: "JSON 合并、统计与批量上报",
+                  link: "/reading-notes/web/js-object-json-merge.md",
+                },
+                {
+                  text: "React 练习笔记（受控组件、计时器、Todo）",
+                  link: "/reading-notes/web/react-practice-notes.md",
+                },
+                {
+                  text: "Vue 练习笔记（受控表单、计时器、Todo）",
+                  link: "/reading-notes/web/vue-practice-notes.md",
+                },
+                {
+                  text: "React Native 练习笔记",
+                  link: "/reading-notes/web/react-native-practice-notes.md",
+                },
+                {
                   text: "离线化（Offline / PWA）",
                   link: "/reading-notes/web/offline.md",
                 },
