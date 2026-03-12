@@ -570,6 +570,10 @@ export default defineConfig({
                 link: "/graph-general/695.md",
               },
               {
+                text: "934.Shortest Bridge",
+                link: "/graph-general/934.md",
+              },
+              {
                 text: "1091.Shortest Path in Binary Matrix",
                 link: "/graph-general/1091.md",
               },
