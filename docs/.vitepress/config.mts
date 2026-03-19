@@ -324,6 +324,10 @@ export default defineConfig({
                 link: "/hashmap/49.md",
               },
               {
+                text: "128.Longest Consecutive Sequence",
+                link: "/hashmap/128.md",
+              },
+              {
                 text: "202.Happy Number",
                 link: "/hashmap/202.md",
               }, 
@@ -398,6 +402,10 @@ export default defineConfig({
               {
                 text: "224.Basic Calculator",
                 link: "/stack/224.md",
+              },
+              {
+                text: "739.Daily Temperatures",
+                link: "/stack/739.md",
               }
             ],
           },
@@ -528,6 +536,10 @@ export default defineConfig({
                 link: "/binary-tree-general/236.md",
               },
               {
+                text: "257.Binary Tree Paths",
+                link: "/binary-tree-general/257.md",
+              },
+              {
                 text: "297.Serialize and Deserialize Binary Tree",
                 link: "/binary-tree-general/297.md",
               },
@@ -564,6 +576,10 @@ export default defineConfig({
               {
                 text: "210.Course Schedule II",
                 link: "/graph-general/210.md",
+              },
+              {
+                text: "310.Minimum Height Trees",
+                link: "/graph-general/310.md",
               },
               {
                 text: "399.Evaluate Division",
@@ -616,6 +632,10 @@ export default defineConfig({
                 link: "/trie/212.md",
               },
               {
+                text: "642.Design Search Autocomplete System",
+                link: "/trie/642.md",
+              },
+              {
                 text: "T9 Contacts / Phone Keypad Search",
                 link: "/trie/contacts-phone-keypad.md",
               },
@@ -638,8 +658,16 @@ export default defineConfig({
                 link: "/backtracking/39.md",
               },
               {
+                text: "40.Combination Sum II",
+                link: "/backtracking/40.md",
+              },
+              {
                 text: "46.Permutations",
                 link: "/backtracking/46.md",
+              },
+              {
+                text: "47.Permutations II",
+                link: "/backtracking/47.md",
               },
               {
                 text: "52.N-Queens II",
@@ -696,8 +724,16 @@ export default defineConfig({
                 link: "/binary-search/162.md",
               },
               {
+                text: "300.Longest Increasing Subsequence",
+                link: "/binary-search/300.md",
+              },
+              {
                 text: "540.Single Element in a Sorted Array",
                 link: "/binary-search/540.md",
+              },
+              {
+                text: "1268.Search Suggestions System",
+                link: "/binary-search/1268.md",
               },
             ],
           },
@@ -754,16 +790,32 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
+                text: "70.Climbing Stairs",
+                link: "1D-DP/70.md",
+              },
+              {
                 text: "139.Word Break",
                 link: "1D-DP/139.md",
               },
               {
-                text: "300.Longest Increasing Subsequence",
-                link: "1D-DP/300.md",
+                text: "198.House Robber",
+                link: "1D-DP/198.md",
+              },
+              {
+                text: "213.House Robber II",
+                link: "1D-DP/213.md",
               },
               {
                 text: "322.Coin Change",
                 link: "1D-DP/322.md",
+              },
+              {
+                text: "377.Combination Sum IV",
+                link: "1D-DP/377.md",
+              },
+              {
+                text: "413.Arithmetic Slices",
+                link: "1D-DP/413.md",
               },
             ],
           },
@@ -806,6 +858,10 @@ export default defineConfig({
                 {
                   text: "309.Best Time to Buy and Sell Stock with Cooldown",
                   link: "multidimensional-dp/309.md",
+                },
+                {
+                  text: "1143.Longest Common Subsequence",
+                  link: "multidimensional-dp/1143.md",
                 },
               ],
             },
