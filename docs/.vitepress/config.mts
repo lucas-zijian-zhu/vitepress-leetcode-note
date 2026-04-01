@@ -64,6 +64,10 @@ export default defineConfig({
                   link: "/reading-notes/web/react-practice-notes.md",
                 },
                 {
+                  text: "React：Zustand + TanStack Query（用户+订单完整示例）",
+                  link: "/reading-notes/web/react-zustand-tanstack-query.md",
+                },
+                {
                   text: "Vue 练习笔记（受控表单、计时器、Todo）",
                   link: "/reading-notes/web/vue-practice-notes.md",
                 },
@@ -100,6 +104,16 @@ export default defineConfig({
                 {
                   text: "Jetpack Compose 常用组件",
                   link: "/reading-notes/android/compose-components.md",
+                },
+              ],
+            },
+            {
+              text: "Flutter",
+              collapsed: false,
+              items: [
+                {
+                  text: "Riverpod + Clean Architecture + Dio（用户+订单示例）",
+                  link: "/reading-notes/flutter/riverpod-clean-architecture-dio.md",
                 },
               ],
             },
@@ -858,6 +872,10 @@ export default defineConfig({
                 {
                   text: "309.Best Time to Buy and Sell Stock with Cooldown",
                   link: "multidimensional-dp/309.md",
+                },
+                {
+                  text: "312.Burst Balloons",
+                  link: "multidimensional-dp/312.md",
                 },
                 {
                   text: "1143.Longest Common Subsequence",
