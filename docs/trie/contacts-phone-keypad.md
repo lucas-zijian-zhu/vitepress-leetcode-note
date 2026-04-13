@@ -458,4 +458,359 @@ def search_contacts_by_digits(digits: str, trie: Trie) -> list[str]:
     return result
 ```
 
-:::
+::::
+
+## HashMap (Map) Trie Variant (Multi-language)
+
+:::: code-group
+
+```typescript [TypeScript]
+class TrieNodeMap {
+    children: Map<string, TrieNodeMap>
+    isEnd: boolean
+
+    constructor() {
+        this.children = new Map()
+        this.isEnd = false
+    }
+}
+
+class TrieMap {
+    root: TrieNodeMap
+    constructor() {
+        this.root = new TrieNodeMap()
+    }
+}
+
+const keypadMap: Record<string, string> = {
+    '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',
+    '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'
+}
+
+function generateTrieMap(contacts: string[], trie: TrieMap): void {
+    for (const contact of contacts) {
+        let cur = trie.root
+        for (const ch of contact) {
+            if (!cur.children.has(ch)) cur.children.set(ch, new TrieNodeMap())
+            cur = cur.children.get(ch)!
+        }
+        cur.isEnd = true
+    }
+}
+
+function getContactsWithPrefixMap(trie: TrieMap, prefix: string): string[] {
+    let cur = trie.root
+    for (const ch of prefix) {
+        const next = cur.children.get(ch)
+        if (!next) return []
+        cur = next
+    }
+    const results: string[] = []
+    const dfs = (node: TrieNodeMap, path: string): void => {
+        if (node.isEnd) results.push(path)
+        const keys = Array.from(node.children.keys()).sort()
+        for (const ch of keys) dfs(node.children.get(ch)!, path + ch)
+    }
+    dfs(cur, prefix)
+    return results
+}
+
+function collectAllWordsMap(node: TrieNodeMap, path: string, result: string[]): void {
+    if (node.isEnd) result.push(path)
+    const keys = Array.from(node.children.keys()).sort()
+    for (const ch of keys) collectAllWordsMap(node.children.get(ch)!, path + ch, result)
+}
+
+function searchContactsByDigitsMap(digits: string, trie: TrieMap): string[] {
+    const result: string[] = []
+    const dfs = (pos: number, node: TrieNodeMap, path: string): void => {
+        if (pos === digits.length) {
+            collectAllWordsMap(node, path, result)
+            return
+        }
+        const letters = keypadMap[digits[pos]]
+        if (!letters) return
+        for (const ch of letters) {
+            const child = node.children.get(ch)
+            if (child) dfs(pos + 1, child, path + ch)
+        }
+    }
+    dfs(0, trie.root, '')
+    return result
+}
+```
+
+```kotlin [Kotlin]
+class TrieNodeMap {
+    val children = HashMap<Char, TrieNodeMap>()
+    var isEnd = false
+}
+
+class TrieMap(val root: TrieNodeMap = TrieNodeMap())
+
+val keypadMap = mapOf(
+    '2' to "abc", '3' to "def", '4' to "ghi", '5' to "jkl",
+    '6' to "mno", '7' to "pqrs", '8' to "tuv", '9' to "wxyz"
+)
+
+fun generateTrieMap(contacts: List<String>, trie: TrieMap) {
+    for (contact in contacts) {
+        var cur = trie.root
+        for (ch in contact) {
+            cur = cur.children.getOrPut(ch) { TrieNodeMap() }
+        }
+        cur.isEnd = true
+    }
+}
+
+fun getContactsWithPrefixMap(trie: TrieMap, prefix: String): List<String> {
+    var cur = trie.root
+    for (ch in prefix) {
+        cur = cur.children[ch] ?: return emptyList()
+    }
+    val results = mutableListOf<String>()
+    fun dfs(node: TrieNodeMap, path: String) {
+        if (node.isEnd) results.add(path)
+        for (ch in node.children.keys.sorted()) {
+            dfs(node.children[ch]!!, path + ch)
+        }
+    }
+    dfs(cur, prefix)
+    return results
+}
+
+fun collectAllWordsMap(node: TrieNodeMap, path: String, result: MutableList<String>) {
+    if (node.isEnd) result.add(path)
+    for (ch in node.children.keys.sorted()) {
+        collectAllWordsMap(node.children[ch]!!, path + ch, result)
+    }
+}
+
+fun searchContactsByDigitsMap(digits: String, trie: TrieMap): List<String> {
+    val result = mutableListOf<String>()
+    fun dfs(pos: Int, node: TrieNodeMap, path: String) {
+        if (pos == digits.length) {
+            collectAllWordsMap(node, path, result)
+            return
+        }
+        val letters = keypadMap[digits[pos]] ?: return
+        for (ch in letters) {
+            val child = node.children[ch] ?: continue
+            dfs(pos + 1, child, path + ch)
+        }
+    }
+    dfs(0, trie.root, "")
+    return result
+}
+```
+
+```java [Java]
+import java.util.*;
+
+class TrieNodeMap {
+    Map<Character, TrieNodeMap> children = new HashMap<>();
+    boolean isEnd = false;
+}
+
+class TrieMap {
+    TrieNodeMap root = new TrieNodeMap();
+}
+
+class SolutionMap {
+    private static final String[] KEYPAD = {
+        "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"
+    };
+
+    void generateTrieMap(String[] contacts, TrieMap trie) {
+        for (String contact : contacts) {
+            TrieNodeMap cur = trie.root;
+            for (char ch : contact.toCharArray()) {
+                cur.children.putIfAbsent(ch, new TrieNodeMap());
+                cur = cur.children.get(ch);
+            }
+            cur.isEnd = true;
+        }
+    }
+
+    List<String> getContactsWithPrefixMap(TrieMap trie, String prefix) {
+        TrieNodeMap cur = trie.root;
+        for (char ch : prefix.toCharArray()) {
+            cur = cur.children.get(ch);
+            if (cur == null) return List.of();
+        }
+        List<String> results = new ArrayList<>();
+        dfsCollect(cur, prefix, results);
+        return results;
+    }
+
+    private void dfsCollect(TrieNodeMap node, String path, List<String> results) {
+        if (node.isEnd) results.add(path);
+        List<Character> keys = new ArrayList<>(node.children.keySet());
+        Collections.sort(keys);
+        for (char ch : keys) {
+            dfsCollect(node.children.get(ch), path + ch, results);
+        }
+    }
+
+    private void collectAllWordsMap(TrieNodeMap node, String path, List<String> result) {
+        if (node.isEnd) result.add(path);
+        List<Character> keys = new ArrayList<>(node.children.keySet());
+        Collections.sort(keys);
+        for (char ch : keys) {
+            collectAllWordsMap(node.children.get(ch), path + ch, result);
+        }
+    }
+
+    List<String> searchContactsByDigitsMap(String digits, TrieMap trie) {
+        List<String> result = new ArrayList<>();
+        dfsDigits(0, trie.root, "", digits, result);
+        return result;
+    }
+
+    private void dfsDigits(int pos, TrieNodeMap node, String path, String digits, List<String> result) {
+        if (pos == digits.length()) {
+            collectAllWordsMap(node, path, result);
+            return;
+        }
+        String letters = KEYPAD[digits.charAt(pos) - '0'];
+        if (letters == null || letters.isEmpty()) return;
+        for (char ch : letters.toCharArray()) {
+            TrieNodeMap child = node.children.get(ch);
+            if (child != null) dfsDigits(pos + 1, child, path + ch, digits, result);
+        }
+    }
+}
+```
+
+```swift [Swift]
+class TrieNodeMap {
+    var children: [Character: TrieNodeMap] = [:]
+    var isEnd = false
+}
+
+class TrieMap {
+    let root = TrieNodeMap()
+}
+
+let keypadMap: [Character: String] = [
+    "2": "abc", "3": "def", "4": "ghi", "5": "jkl",
+    "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"
+]
+
+func generateTrieMap(_ contacts: [String], _ trie: TrieMap) {
+    for contact in contacts {
+        var cur = trie.root
+        for ch in contact {
+            if cur.children[ch] == nil {
+                cur.children[ch] = TrieNodeMap()
+            }
+            cur = cur.children[ch]!
+        }
+        cur.isEnd = true
+    }
+}
+
+func getContactsWithPrefixMap(_ trie: TrieMap, _ prefix: String) -> [String] {
+    var cur = trie.root
+    for ch in prefix {
+        guard let next = cur.children[ch] else { return [] }
+        cur = next
+    }
+    var results: [String] = []
+    func dfs(_ node: TrieNodeMap, _ path: String) {
+        if node.isEnd { results.append(path) }
+        for ch in node.children.keys.sorted() {
+            dfs(node.children[ch]!, path + String(ch))
+        }
+    }
+    dfs(cur, prefix)
+    return results
+}
+
+func collectAllWordsMap(_ node: TrieNodeMap, _ path: String, _ result: inout [String]) {
+    if node.isEnd { result.append(path) }
+    for ch in node.children.keys.sorted() {
+        collectAllWordsMap(node.children[ch]!, path + String(ch), &result)
+    }
+}
+
+func searchContactsByDigitsMap(_ digits: String, _ trie: TrieMap) -> [String] {
+    var result: [String] = []
+    let chars = Array(digits)
+    func dfs(_ pos: Int, _ node: TrieNodeMap, _ path: String) {
+        if pos == chars.count {
+            collectAllWordsMap(node, path, &result)
+            return
+        }
+        guard let letters = keypadMap[chars[pos]] else { return }
+        for ch in letters {
+            if let child = node.children[ch] {
+                dfs(pos + 1, child, path + String(ch))
+            }
+        }
+    }
+    dfs(0, trie.root, "")
+    return result
+}
+```
+
+```python [Python]
+class TrieNodeMap:
+    def __init__(self):
+        self.children: dict[str, "TrieNodeMap"] = {}
+        self.is_end = False
+
+class TrieMap:
+    def __init__(self):
+        self.root = TrieNodeMap()
+
+KEYPAD_MAP = {
+    '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',
+    '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'
+}
+
+def generate_trie_map(contacts: list[str], trie: TrieMap) -> None:
+    for contact in contacts:
+        cur = trie.root
+        for ch in contact:
+            if ch not in cur.children:
+                cur.children[ch] = TrieNodeMap()
+            cur = cur.children[ch]
+        cur.is_end = True
+
+def get_contacts_with_prefix_map(trie: TrieMap, prefix: str) -> list[str]:
+    cur = trie.root
+    for ch in prefix:
+        if ch not in cur.children:
+            return []
+        cur = cur.children[ch]
+    results: list[str] = []
+    def dfs(node: TrieNodeMap, path: str) -> None:
+        if node.is_end:
+            results.append(path)
+        for ch in sorted(node.children.keys()):
+            dfs(node.children[ch], path + ch)
+    dfs(cur, prefix)
+    return results
+
+def collect_all_words_map(node: TrieNodeMap, path: str, result: list[str]) -> None:
+    if node.is_end:
+        result.append(path)
+    for ch in sorted(node.children.keys()):
+        collect_all_words_map(node.children[ch], path + ch, result)
+
+def search_contacts_by_digits_map(digits: str, trie: TrieMap) -> list[str]:
+    result: list[str] = []
+    def dfs(pos: int, node: TrieNodeMap, path: str) -> None:
+        if pos == len(digits):
+            collect_all_words_map(node, path, result)
+            return
+        letters = KEYPAD_MAP.get(digits[pos], "")
+        for ch in letters:
+            if ch in node.children:
+                dfs(pos + 1, node.children[ch], path + ch)
+    dfs(0, trie.root, "")
+    return result
+```
+
+::::

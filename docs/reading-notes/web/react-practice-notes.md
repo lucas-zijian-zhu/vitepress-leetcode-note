@@ -380,6 +380,187 @@ export default function Grid() {
 
 ---
 
+## 题目 8：自动补全输入框（Floating Suggestion）
+
+要求点：
+
+- 选项来自预设字符串数组。
+- 使用 **SCSS 外置样式**（不使用内联 `style`）。
+- 根据输入内容做“包含匹配”（不区分大小写）并支持 **300ms 防抖**。
+- 选中后只更新受控 `input` 的 `value`，不要在输入框下方重复展示。
+- 下拉层是 floating：整体灰色边框、内部白底，只有 hover / 键盘高亮项才变色。
+- 支持键盘：`ArrowUp` / `ArrowDown` 切换，`Enter` 选中，`Escape` 关闭。
+
+```tsx
+import { useEffect, useMemo, useState } from 'react';
+import './floating-autocomplete.scss';
+
+const OPTIONS = [
+  'React',
+  'Redux',
+  'TypeScript',
+  'JavaScript',
+  'Node.js',
+  'Vite',
+  'Next.js',
+  'Tailwind CSS',
+  'React Query',
+  'Zustand',
+];
+
+export default function FloatingAutocomplete() {
+  const [value, setValue] = useState('');
+  const [keyword, setKeyword] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => {
+      setKeyword(value.trim());
+    }, 300);
+    return () => clearTimeout(id);
+  }, [value]);
+
+  const suggestions = useMemo(() => {
+    const lower = keyword.toLowerCase();
+    if (lower === '') return [];
+    return OPTIONS.filter((item) => item.toLowerCase().includes(lower)).slice(0, 8);
+  }, [keyword]);
+
+  useEffect(() => {
+    if (!isOpen || suggestions.length === 0) {
+      setActiveIndex(-1);
+      return;
+    }
+    setActiveIndex(0);
+  }, [isOpen, suggestions]);
+
+  const selectItem = (item: string) => {
+    setValue(item);
+    setIsOpen(false);
+    setActiveIndex(-1);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!isOpen || suggestions.length === 0) {
+      if (e.key === 'Escape') setIsOpen(false);
+      return;
+    }
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActiveIndex((prev) => (prev + 1) % suggestions.length);
+      return;
+    }
+
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActiveIndex((prev) => (prev - 1 + suggestions.length) % suggestions.length);
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (activeIndex >= 0) selectItem(suggestions[activeIndex]);
+      return;
+    }
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      setIsOpen(false);
+      setActiveIndex(-1);
+    }
+  };
+
+  return (
+    <div className="autocomplete-page">
+      <div className="autocomplete">
+        <input
+          className="autocomplete__input"
+          value={value}
+          placeholder="输入关键字，例如: react"
+          onChange={(e) => {
+            setValue(e.target.value);
+            setIsOpen(true);
+          }}
+          onFocus={() => setIsOpen(true)}
+          onKeyDown={handleKeyDown}
+          onBlur={() => {
+            // 让 onMouseDown 先触发，避免点击选项时被 blur 提前收起
+            window.setTimeout(() => setIsOpen(false), 100);
+          }}
+        />
+
+        {isOpen && suggestions.length > 0 && (
+          <ul className="autocomplete__list">
+            {suggestions.map((item, index) => (
+              <li
+                key={item}
+                className={`autocomplete__item ${index === activeIndex ? 'is-active' : ''}`}
+                onMouseDown={() => selectItem(item)}
+                onMouseEnter={() => setActiveIndex(index)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+```scss
+.autocomplete-page {
+  padding: 20px;
+}
+
+.autocomplete {
+  position: relative;
+  width: 320px;
+  text-align: left;
+}
+
+.autocomplete__input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.autocomplete__list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid #999;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+}
+
+.autocomplete__item {
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+  text-align: left;
+
+  &:hover,
+  &.is-active {
+    background: #e8eefc;
+  }
+}
+```
+
+---
+
 ## 延伸阅读
 
 - [Vue 练习笔记](./vue-practice-notes.md)

@@ -323,6 +323,10 @@ export default defineConfig({
                 text: "289.Game of Life",
                 link: "/matrix/289.md",
               },
+              {
+                text: "Remaining Leaves After Wind (Custom)",
+                link: "/matrix/remaining-leaves-wind.md",
+              },
             ],
           },
           {
