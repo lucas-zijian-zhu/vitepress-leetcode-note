@@ -315,6 +315,48 @@ Notes:
 - If you need “fail fast” or “allSettled-style results”, you can extend this skeleton with `reject` / result collection (a bit more code).
 - This version is best for submitting a fixed list of tasks. If you need to keep appending tasks while running, you’ll need a long-lived global queue (with an explicit close/onIdle signal), which is more involved.
 
+### Worker-style task pool (fixed workers pulling tasks)
+
+This style does not use a central refill loop. Instead, it starts a fixed number of workers, and each worker keeps pulling the next task until the queue is empty.
+
+```js
+/**
+ * Worker-style task pool
+ * - tasks: (() => any | Promise<any>)[]
+ * - limit: concurrency cap
+ * - returns per-task results in original order
+ * - non-fail-fast by default: task failures are stored in errors
+ */
+async function runPoolWithWorkers(tasks, limit = 4) {
+  const results = new Array(tasks.length);
+  const errors = new Array(tasks.length);
+  let nextIndex = 0;
+
+  function getNextIndex() {
+    if (nextIndex >= tasks.length) return -1;
+    return nextIndex++;
+  }
+
+  async function worker() {
+    while (true) {
+      const i = getNextIndex();
+      if (i === -1) break;
+
+      try {
+        results[i] = await Promise.resolve().then(tasks[i]); // normalize sync/async
+      } catch (err) {
+        errors[i] = err;
+      }
+    }
+  }
+
+  const workerCount = Math.min(limit, tasks.length);
+  await Promise.all(Array.from({ length: workerCount }, () => worker()));
+
+  return { results, errors };
+}
+```
+
 ### Dynamic version: `TaskPool` (`add` / `close` / `done`)
 
 If tasks keep arriving over time, make the queue a long-lived object:

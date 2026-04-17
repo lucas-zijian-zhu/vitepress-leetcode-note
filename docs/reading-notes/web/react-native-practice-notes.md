@@ -1,6 +1,6 @@
 # React Native 练习笔记
 
-与 Web 对齐的前 6 题：**1 下拉 → 2 输入 → 3 正计时 → 4 Todo → 5 防抖 → 6 计数器**。Web 另有 **3b 倒计时**、**题目 7 网格**（DOM 专用）；RN 用 **题目 3 正计时** 即可，倒计时可对照 Vue 3b 自行改写；**题目 7 起**（Tabs / Modal / 网络等）为 RN 扩展。
+与 Web 对齐的前 6 题：**1 下拉 → 2 输入 → 3 正计时 → 3b 倒计时 → 4 Todo → 5 防抖 → 6 计数器**。Web 的 **题目 7 网格**属于 DOM 专用；**题目 7 起**（Tabs / Modal / 网络等）为 RN 扩展。
 
 每题为**完整可运行组件**（Expo / RN CLI 均可）。`useEffect` 里定时器必须在 cleanup 里 `clear`；列表用稳定 `key`（id）；`TextInput` 用 `value` + `onChangeText`。
 
@@ -174,6 +174,115 @@ const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   timerText: { fontSize: 36, marginBottom: 20 },
   buttonRow: { flexDirection: 'row', justifyContent: 'space-between', width: '80%' },
+});
+```
+
+---
+
+## 题目 3b：倒计时（Start / Pause / Resume / Reset）
+
+思路与 Web 版一致：`isRunning` 驱动 `useEffect` 里的 `setInterval`；暂停时 effect 重跑会 cleanup 并清除定时器。`remainingTime` 用函数式更新，到 0 后自动停止。
+
+```jsx
+import React, { useEffect, useState } from 'react';
+import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+
+export default function CountdownTimer() {
+  const [inputSeconds, setInputSeconds] = useState('60');
+  const [totalTime, setTotalTime] = useState(60);
+  const [remainingTime, setRemainingTime] = useState(60);
+  const [isRunning, setIsRunning] = useState(false);
+
+  const parsedInput = Number(inputSeconds) || 0;
+
+  const startTimer = () => {
+    if (isRunning || parsedInput <= 0) return;
+    setTotalTime(parsedInput);
+    setRemainingTime(parsedInput);
+    setIsRunning(true);
+  };
+
+  const togglePauseResume = () => {
+    if (remainingTime === 0) return;
+    setIsRunning((prev) => !prev);
+  };
+
+  const resetTimer = () => {
+    setIsRunning(false);
+    setRemainingTime(totalTime);
+  };
+
+  useEffect(() => {
+    if (!isRunning) return;
+    const id = setInterval(() => {
+      setRemainingTime((prev) => {
+        if (prev > 0) return prev - 1;
+        setIsRunning(false);
+        return 0;
+      });
+    }, 1000);
+    return () => clearInterval(id);
+  }, [isRunning]);
+
+  const formatTime = (sec) => {
+    const m = String(Math.floor(sec / 60)).padStart(2, '0');
+    const s = String(sec % 60).padStart(2, '0');
+    return `${m}:${s}`;
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.timerText}>{formatTime(remainingTime)}</Text>
+
+      <TextInput
+        value={inputSeconds}
+        onChangeText={setInputSeconds}
+        keyboardType="number-pad"
+        placeholder="Set time in seconds"
+        style={styles.input}
+      />
+
+      <View style={styles.buttonRow}>
+        <Pressable style={styles.button} onPress={startTimer} disabled={isRunning || parsedInput <= 0}>
+          <Text style={styles.buttonText}>Start</Text>
+        </Pressable>
+        <Pressable style={styles.button} onPress={togglePauseResume} disabled={remainingTime === 0}>
+          <Text style={styles.buttonText}>
+            {isRunning ? 'Pause' : remainingTime < totalTime ? 'Resume' : 'Pause'}
+          </Text>
+        </Pressable>
+        <Pressable style={styles.button} onPress={resetTimer}>
+          <Text style={styles.buttonText}>Reset</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { padding: 20, alignItems: 'center' },
+  timerText: { fontSize: 36, marginBottom: 16 },
+  input: {
+    width: '80%',
+    height: 42,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    marginBottom: 16,
+  },
+  buttonRow: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  button: {
+    backgroundColor: '#2563eb',
+    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+  buttonText: { color: '#fff', fontWeight: '600' },
 });
 ```
 

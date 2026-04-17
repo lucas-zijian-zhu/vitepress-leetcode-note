@@ -359,6 +359,48 @@ function runPool(tasks, limit = 4) {
 - 如果你希望 “一旦某个 task 失败就让整体失败 / 或汇总 allSettled 结果”，可以在这个骨架上加 `reject` 或结果收集（会稍微复杂一点）。
 - 这个版本适合“一次性提交一个任务列表”；如果你要“运行过程中继续追加任务”，需要一个长期存在的全局队列（并提供 close/onIdle 之类信号），实现会更复杂。
 
+### Worker 格式任务池（固定数量 worker 拉取任务）
+
+这种写法不是“中心调度器补位”，而是先启动固定数量 worker，然后每个 worker 循环拉取下一个任务执行。
+
+```js
+/**
+ * Worker 模式任务池
+ * - tasks: (() => any | Promise<any>)[]
+ * - limit: 并发上限
+ * - 返回每个任务的结果（按原顺序）
+ * - 默认不中断：单个任务失败会记录到 errors
+ */
+async function runPoolWithWorkers(tasks, limit = 4) {
+  const results = new Array(tasks.length);
+  const errors = new Array(tasks.length);
+  let nextIndex = 0;
+
+  function getNextIndex() {
+    if (nextIndex >= tasks.length) return -1;
+    return nextIndex++;
+  }
+
+  async function worker() {
+    while (true) {
+      const i = getNextIndex();
+      if (i === -1) break;
+
+      try {
+        results[i] = await Promise.resolve().then(tasks[i]); // 统一同步/异步
+      } catch (err) {
+        errors[i] = err;
+      }
+    }
+  }
+
+  const workerCount = Math.min(limit, tasks.length);
+  await Promise.all(Array.from({ length: workerCount }, () => worker()));
+
+  return { results, errors };
+}
+```
+
 ### 可动态追加任务的版本：`TaskPool`（`add` / `close` / `done`）
 
 如果你要“不断追加任务”，可以把队列做成一个长期存活的对象：
